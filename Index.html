@@ -34,42 +34,18 @@
     }
   </script>
   <style>
-    body {
-      background-color: #F5F0E6;
-      color: #18283B;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      -webkit-tap-highlight-color: transparent;
-    }
-    h1, h2, h3, .font-serif {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-    }
-    .gold-gradient {
-      background: linear-gradient(135deg, #C5A879 0%, #DFC69B 50%, #B39360 100%);
-    }
-    .glass-nav {
-      background: rgba(245, 240, 230, 0.92);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-    }
-    input, select, textarea {
-      font-size: 16px !important;
-    }
-    ::-webkit-scrollbar {
-      width: 6px;
-      height: 6px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #F5F0E6;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #C5A879;
-      border-radius: 3px;
-    }
+    body { background-color: #F5F0E6; color: #18283B; font-family: 'Plus Jakarta Sans', sans-serif; -webkit-tap-highlight-color: transparent; }
+    h1, h2, h3, .font-serif { font-family: 'Cormorant Garamond', Georgia, serif; }
+    .gold-gradient { background: linear-gradient(135deg, #C5A879 0%, #DFC69B 50%, #B39360 100%); }
+    .glass-nav { background: rgba(245, 240, 230, 0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    input, select, textarea { font-size: 16px !important; }
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #F5F0E6; }
+    ::-webkit-scrollbar-thumb { background: #C5A879; border-radius: 3px; }
   </style>
 </head>
 <body class="min-h-screen flex flex-col selection:bg-gold/30 selection:text-navy">
 
-  <!-- Toast Notification -->
   <div id="toast-container" class="fixed bottom-5 right-5 left-5 sm:left-auto sm:w-96 z-50 flex flex-col gap-2 pointer-events-none"></div>
 
   <!-- PUBLIC HEADER -->
@@ -79,64 +55,48 @@
         <span class="font-serif text-3xl sm:text-4xl tracking-[0.22em] font-semibold text-navy">KIVORA</span>
         <span class="text-[9px] uppercase tracking-[0.28em] text-gold-dark -mt-1">Elegance in Every Detail</span>
       </a>
-
       <nav class="hidden md:flex items-center space-x-8">
         <button onclick="navigate('home')" data-nav="home" class="nav-link text-sm uppercase tracking-[0.15em] text-navy/80 hover:text-navy transition py-2">Home</button>
         <button onclick="navigate('about')" data-nav="about" class="nav-link text-sm uppercase tracking-[0.15em] text-navy/80 hover:text-navy transition py-2">About KIVORA</button>
         <button onclick="navigate('collections')" data-nav="collections" class="nav-link text-sm uppercase tracking-[0.15em] text-navy/80 hover:text-navy transition py-2">Collections</button>
         <button onclick="navigate('contact')" data-nav="contact" class="nav-link text-sm uppercase tracking-[0.15em] text-navy/80 hover:text-navy transition py-2">Contact Us</button>
-        <button onclick="navigate('admin')" data-nav="admin" class="nav-link px-5 py-2.5 rounded-full border border-navy text-xs uppercase tracking-[0.18em] text-navy hover:bg-navy hover:text-cream transition">
-          Admin Login
-        </button>
+        <button onclick="navigate('admin')" data-nav="admin" class="nav-link px-5 py-2.5 rounded-full border border-navy text-xs uppercase tracking-[0.18em] text-navy hover:bg-navy hover:text-cream transition">Admin Login</button>
       </nav>
-
       <button onclick="toggleMobileMenu()" aria-label="Toggle Menu" class="md:hidden p-3 -mr-2 text-navy focus:outline-none">
-        <svg id="menu-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 7h16M4 12h16M4 17h16"/>
-        </svg>
-        <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/>
-        </svg>
+        <svg id="menu-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/></svg>
       </button>
     </div>
-
     <div id="mobile-menu" class="hidden md:hidden bg-cream border-b border-navy/10 px-6 py-6 space-y-3 shadow-lg">
       <button onclick="navigate('home'); toggleMobileMenu()" class="block w-full text-left py-3 text-base uppercase tracking-[0.16em] text-navy border-b border-navy/5">Home</button>
       <button onclick="navigate('about'); toggleMobileMenu()" class="block w-full text-left py-3 text-base uppercase tracking-[0.16em] text-navy border-b border-navy/5">About KIVORA</button>
       <button onclick="navigate('collections'); toggleMobileMenu()" class="block w-full text-left py-3 text-base uppercase tracking-[0.16em] text-navy border-b border-navy/5">Collections</button>
       <button onclick="navigate('contact'); toggleMobileMenu()" class="block w-full text-left py-3 text-base uppercase tracking-[0.16em] text-navy border-b border-navy/5">Contact Us</button>
       <div class="pt-2">
-        <button onclick="navigate('admin'); toggleMobileMenu()" class="w-full py-3.5 rounded-full bg-navy text-cream text-xs uppercase tracking-[0.2em] font-medium">
-          Admin Login
-        </button>
+        <button onclick="navigate('admin'); toggleMobileMenu()" class="w-full py-3.5 rounded-full bg-navy text-cream text-xs uppercase tracking-[0.2em] font-medium">Admin Login</button>
       </div>
     </div>
   </header>
 
   <!-- MAIN PUBLIC CONTENT -->
   <main id="public-pages" class="flex-grow">
-
     <!-- PAGE 1: HOME -->
     <section id="page-home" class="page-section">
       <div class="relative overflow-hidden py-20 sm:py-28 lg:py-36 px-4 sm:px-6 lg:px-8 border-b border-navy/10">
         <div class="max-w-4xl mx-auto text-center">
           <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-sage/60 border border-navy/10 mb-8">
             <span class="w-1.5 h-1.5 rounded-full bg-gold-dark"></span>
-            <span class="text-[11px] uppercase tracking-[0.24em] text-navy font-medium">Debut Collection • Coming Soon</span>
+            <span class="text-[11px] uppercase tracking-[0.24em] text-navy font-medium">Curated House of Accessories</span>
           </div>
           <h1 class="font-serif text-5xl sm:text-7xl lg:text-8xl font-normal tracking-tight text-navy leading-[1.08] mb-6">
             Elegance in<br /><span class="italic text-gold-dark">Every Detail.</span>
           </h1>
           <p class="max-w-xl mx-auto text-base sm:text-lg text-navy/75 font-light leading-relaxed mb-10">
-            KIVORA is crafting a curated house of affordable premium accessories—designed with quiet sophistication, enduring materials, and effortless everyday grace.
+            KIVORA crafts a curated house of affordable premium accessories—designed with quiet sophistication, enduring materials, and effortless everyday grace.
           </p>
           <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button onclick="navigate('collections')" class="w-full sm:w-auto px-8 py-4 rounded-full bg-navy text-cream text-xs uppercase tracking-[0.22em] font-medium hover:bg-navy-light transition shadow-sm">
-              Explore Preview
-            </button>
-            <button onclick="navigate('about')" class="w-full sm:w-auto px-8 py-4 rounded-full border border-navy/30 text-navy text-xs uppercase tracking-[0.22em] font-medium hover:border-navy transition">
-              Our Philosophy
-            </button>
+            <button onclick="navigate('collections')" class="w-full sm:w-auto px-8 py-4 rounded-full bg-navy text-cream text-xs uppercase tracking-[0.22em] font-medium hover:bg-navy-light transition shadow-sm">Shop Collections</button>
+            <button onclick="navigate('about')" class="w-full sm:w-auto px-8 py-4 rounded-full border border-navy/30 text-navy text-xs uppercase tracking-[0.22em] font-medium hover:border-navy transition">Our Philosophy</button>
           </div>
         </div>
       </div>
@@ -160,8 +120,8 @@
             </div>
             <div class="bg-cream p-8 rounded-2xl border border-navy/10">
               <div class="w-10 h-10 rounded-full bg-sage flex items-center justify-center text-navy font-serif text-xl mb-5">III</div>
-              <h3 class="font-serif text-2xl text-navy mb-3">Curated Releases</h3>
-              <p class="text-sm text-navy/70 leading-relaxed">Every piece is carefully selected and inspected before joining the KIVORA archive.</p>
+              <h3 class="font-serif text-2xl text-navy mb-3">Express Nationwide Delivery</h3>
+              <p class="text-sm text-navy/70 leading-relaxed">Every piece is carefully inspected and dispatched with instant Delhivery AWB tracking.</p>
             </div>
           </div>
         </div>
@@ -170,16 +130,12 @@
       <div class="py-20 px-4 sm:px-6 lg:px-8">
         <div class="max-w-2xl mx-auto bg-navy text-cream rounded-3xl p-8 sm:p-14 text-center shadow-xl relative overflow-hidden">
           <div class="absolute top-0 left-0 right-0 h-1 gold-gradient"></div>
-          <span class="text-xs uppercase tracking-[0.28em] text-gold">First Release</span>
-          <h2 class="font-serif text-3xl sm:text-5xl mt-3 mb-4">Our Inaugural Edit Is in Preparation</h2>
-          <p class="text-sm sm:text-base text-cream/75 font-light leading-relaxed mb-8">
-            We are currently curating our debut selection of signature accessories. Leave your email to receive private early access the moment our doors open.
-          </p>
+          <span class="text-xs uppercase tracking-[0.28em] text-gold">Private List</span>
+          <h2 class="font-serif text-3xl sm:text-5xl mt-3 mb-4">Join the KIVORA Inner Circle</h2>
+          <p class="text-sm sm:text-base text-cream/75 font-light leading-relaxed mb-8">Leave your email to receive private early access to limited drops and new releases.</p>
           <form onsubmit="handleWaitlistSubmit(event)" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
             <input type="email" id="waitlist-email" required placeholder="Enter your email address" class="flex-grow px-5 py-3.5 rounded-full bg-white/10 border border-cream/20 text-cream placeholder:text-cream/45 focus:outline-none focus:border-gold" />
-            <button type="submit" class="px-7 py-3.5 rounded-full bg-gold text-navy font-medium text-xs uppercase tracking-[0.2em] hover:bg-cream transition whitespace-nowrap">
-              Notify Me
-            </button>
+            <button type="submit" class="px-7 py-3.5 rounded-full bg-gold text-navy font-medium text-xs uppercase tracking-[0.2em] hover:bg-cream transition whitespace-nowrap">Notify Me</button>
           </form>
         </div>
       </div>
@@ -193,19 +149,11 @@
           <h1 class="font-serif text-4xl sm:text-6xl text-navy mt-3 mb-6">About KIVORA</h1>
           <div class="w-16 h-px bg-gold mx-auto"></div>
         </div>
-
         <div class="space-y-8 text-navy/80 leading-relaxed text-base sm:text-lg font-light">
-          <p class="font-serif text-2xl sm:text-3xl text-navy leading-snug text-center max-w-2xl mx-auto">
-            “True elegance does not demand attention; it is discovered in the quiet precision of every detail.”
-          </p>
-          <p>
-            Founded with a singular vision, <strong class="font-medium text-navy">KIVORA</strong> bridges the space between everyday practicality and luxury minimalism. We believe that the accessories you reach for every morning should feel intentional, refined, and built to endure—without carrying an unattainable luxury markup.
-          </p>
-          <p>
-            From subtle metallic accents to tactile finishes, each upcoming KIVORA release is thoughtfully curated to complement modern wardrobes effortlessly. Rather than rushing seasonal trends, we focus on enduring silhouettes that remain relevant season after season.
-          </p>
+          <p class="font-serif text-2xl sm:text-3xl text-navy leading-snug text-center max-w-2xl mx-auto">“True elegance does not demand attention; it is discovered in the quiet precision of every detail.”</p>
+          <p>Founded with a singular vision, <strong class="font-medium text-navy">KIVORA</strong> bridges the space between everyday practicality and luxury minimalism. We believe that the accessories you reach for every morning should feel intentional, refined, and built to endure—without carrying an unattainable luxury markup.</p>
+          <p>From subtle metallic accents to tactile finishes, each upcoming KIVORA release is thoughtfully curated to complement modern wardrobes effortlessly. Rather than rushing seasonal trends, we focus on enduring silhouettes that remain relevant season after season.</p>
         </div>
-
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-14">
           <div class="p-8 rounded-2xl bg-sage/45 border border-navy/10">
             <span class="text-xs uppercase tracking-[0.22em] text-navy/60">Positioning</span>
@@ -221,51 +169,28 @@
       </div>
     </section>
 
-    <!-- PAGE 3: COLLECTIONS -->
+    <!-- PAGE 3: COLLECTIONS (LIVE STOREFRONT + CHECKOUT) -->
     <section id="page-collections" class="page-section hidden py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
-      <div class="max-w-5xl mx-auto">
-        <div class="text-center mb-14">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-10">
           <span class="text-xs uppercase tracking-[0.28em] text-gold-dark">The Archive</span>
           <h1 class="font-serif text-4xl sm:text-6xl text-navy mt-3 mb-4">Collections</h1>
-          <p class="max-w-xl mx-auto text-sm sm:text-base text-navy/70">
-            Our curated catalog is currently being finalized. No pieces are listed yet—each category below will unveil upon our official launch.
-          </p>
+          <p class="max-w-xl mx-auto text-sm sm:text-base text-navy/70">Select any piece below to order directly with express nationwide Delhivery shipping.</p>
         </div>
-
-        <div class="bg-cream-dark/50 border border-gold/40 rounded-3xl p-10 sm:p-16 text-center mb-12">
-          <div class="inline-block px-4 py-1.5 rounded-full bg-navy text-gold text-[11px] uppercase tracking-[0.25em] mb-6">
-            Coming Soon
-          </div>
+        <div class="flex flex-wrap items-center justify-center gap-2 mb-10">
+          <button onclick="filterStoreCategory('ALL')" data-storecat="ALL" class="store-cat-pill px-5 py-2 rounded-full bg-navy text-cream text-xs uppercase tracking-[0.18em] transition">All</button>
+          <button onclick="filterStoreCategory('Jewelry')" data-storecat="Jewelry" class="store-cat-pill px-5 py-2 rounded-full border border-navy/20 text-navy text-xs uppercase tracking-[0.18em] hover:border-navy transition">Jewelry</button>
+          <button onclick="filterStoreCategory('Bags & Clutches')" data-storecat="Bags & Clutches" class="store-cat-pill px-5 py-2 rounded-full border border-navy/20 text-navy text-xs uppercase tracking-[0.18em] hover:border-navy transition">Bags &amp; Clutches</button>
+          <button onclick="filterStoreCategory('Watches')" data-storecat="Watches" class="store-cat-pill px-5 py-2 rounded-full border border-navy/20 text-navy text-xs uppercase tracking-[0.18em] hover:border-navy transition">Watches</button>
+          <button onclick="filterStoreCategory('Eyewear')" data-storecat="Eyewear" class="store-cat-pill px-5 py-2 rounded-full border border-navy/20 text-navy text-xs uppercase tracking-[0.18em] hover:border-navy transition">Eyewear</button>
+          <button onclick="filterStoreCategory('Hair Accessories')" data-storecat="Hair Accessories" class="store-cat-pill px-5 py-2 rounded-full border border-navy/20 text-navy text-xs uppercase tracking-[0.18em] hover:border-navy transition">Hair Accessories</button>
+        </div>
+        <div id="public-storefront-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+        <div id="public-storefront-empty" class="bg-cream-dark/50 border border-gold/40 rounded-3xl p-10 sm:p-16 text-center mb-12">
+          <div class="inline-block px-4 py-1.5 rounded-full bg-navy text-gold text-[11px] uppercase tracking-[0.25em] mb-6">Coming Soon</div>
           <h2 class="font-serif text-3xl sm:text-5xl text-navy mb-4">Debut Accessories Curating Now</h2>
-          <p class="max-w-lg mx-auto text-sm sm:text-base text-navy/75 leading-relaxed mb-8">
-            We are hand-selecting our inaugural pieces to ensure every item meets the KIVORA standard of quality and elegance. Check back soon to explore our full catalog.
-          </p>
-          <button onclick="navigate('home')" class="px-7 py-3.5 rounded-full border border-navy text-navy text-xs uppercase tracking-[0.2em] hover:bg-navy hover:text-cream transition">
-            Join Launch Waitlist
-          </button>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          <div class="p-6 rounded-2xl border border-navy/10 bg-cream text-center">
-            <span class="text-[10px] uppercase tracking-[0.25em] text-gold-dark">Category 01</span>
-            <h3 class="font-serif text-2xl text-navy mt-2 mb-1">Jewelry</h3>
-            <p class="text-xs text-navy/60 uppercase tracking-widest">Coming Soon</p>
-          </div>
-          <div class="p-6 rounded-2xl border border-navy/10 bg-cream text-center">
-            <span class="text-[10px] uppercase tracking-[0.25em] text-gold-dark">Category 02</span>
-            <h3 class="font-serif text-2xl text-navy mt-2 mb-1">Bags & Clutches</h3>
-            <p class="text-xs text-navy/60 uppercase tracking-widest">Coming Soon</p>
-          </div>
-          <div class="p-6 rounded-2xl border border-navy/10 bg-cream text-center">
-            <span class="text-[10px] uppercase tracking-[0.25em] text-gold-dark">Category 03</span>
-            <h3 class="font-serif text-2xl text-navy mt-2 mb-1">Watches & Eyewear</h3>
-            <p class="text-xs text-navy/60 uppercase tracking-widest">Coming Soon</p>
-          </div>
-          <div class="p-6 rounded-2xl border border-navy/10 bg-cream text-center">
-            <span class="text-[10px] uppercase tracking-[0.25em] text-gold-dark">Category 04</span>
-            <h3 class="font-serif text-2xl text-navy mt-2 mb-1">Hair & Lifestyle</h3>
-            <p class="text-xs text-navy/60 uppercase tracking-widest">Coming Soon</p>
-          </div>
+          <p class="max-w-lg mx-auto text-sm sm:text-base text-navy/75 leading-relaxed mb-8">We are hand-selecting our inaugural pieces to ensure every item meets the KIVORA standard of quality and elegance. Check back soon to explore our full catalog.</p>
+          <button onclick="navigate('home')" class="px-7 py-3.5 rounded-full border border-navy text-navy text-xs uppercase tracking-[0.2em] hover:bg-navy hover:text-cream transition">Join Launch Waitlist</button>
         </div>
       </div>
     </section>
@@ -276,11 +201,8 @@
         <div class="text-center mb-12">
           <span class="text-xs uppercase tracking-[0.28em] text-gold-dark">Get in Touch</span>
           <h1 class="font-serif text-4xl sm:text-6xl text-navy mt-3 mb-4">Contact KIVORA</h1>
-          <p class="text-sm sm:text-base text-navy/70">
-            Have a question about our upcoming launch, press inquiries, or collaborations? Send us a message directly.
-          </p>
+          <p class="text-sm sm:text-base text-navy/70">Have a question about our upcoming launch, press inquiries, or collaborations? Send us a message directly.</p>
         </div>
-
         <form onsubmit="handleContactSubmit(event)" class="bg-white/60 border border-navy/10 rounded-3xl p-6 sm:p-10 space-y-6 shadow-sm">
           <div>
             <label class="block text-xs uppercase tracking-[0.18em] text-navy/75 mb-2">Your Name</label>
@@ -294,31 +216,19 @@
             <label class="block text-xs uppercase tracking-[0.18em] text-navy/75 mb-2">Message</label>
             <textarea id="contact-message" rows="4" required placeholder="How can we assist you?" class="w-full px-4 py-3.5 rounded-xl bg-cream border border-navy/15 text-navy focus:outline-none focus:border-navy"></textarea>
           </div>
-          <button type="submit" class="w-full py-4 rounded-full bg-navy text-cream text-xs uppercase tracking-[0.22em] font-medium hover:bg-navy-light transition">
-            Send Inquiry
-          </button>
+          <button type="submit" class="w-full py-4 rounded-full bg-navy text-cream text-xs uppercase tracking-[0.22em] font-medium hover:bg-navy-light transition">Send Inquiry</button>
         </form>
       </div>
     </section>
 
-    <!-- PAGE 5: ADMIN LOGIN -->
+    <!-- PAGE 5: ADMIN LOGIN (LOCKED TO SOLE OWNER EMAIL) -->
     <section id="page-admin" class="page-section hidden py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
       <div class="max-w-md mx-auto bg-white/80 border border-navy/15 rounded-3xl p-8 sm:p-10 shadow-lg">
         <div class="text-center mb-8">
           <span class="text-[11px] uppercase tracking-[0.28em] text-gold-dark">Private Portal</span>
           <h1 class="font-serif text-3xl sm:text-4xl text-navy mt-2">KIVORA Admin</h1>
-          <p class="text-xs text-navy/65 mt-2">Authenticated owner access only. Cloud-synced across mobile & desktop.</p>
+          <p class="text-xs text-navy/65 mt-2">Authenticated sole-owner access only. Cloud-synced across mobile &amp; desktop.</p>
         </div>
-
-        <div class="grid grid-cols-2 gap-2 p-1 rounded-xl bg-cream-dark/60 mb-6">
-          <button type="button" id="tab-signin" onclick="setAuthMode('signin')" class="py-2.5 rounded-lg text-xs uppercase tracking-wider font-medium bg-navy text-cream transition">
-            Sign In
-          </button>
-          <button type="button" id="tab-signup" onclick="setAuthMode('signup')" class="py-2.5 rounded-lg text-xs uppercase tracking-wider font-medium text-navy/70 transition">
-            First-Time Setup
-          </button>
-        </div>
-
         <form onsubmit="handleAdminAuth(event)" class="space-y-5">
           <div>
             <label class="block text-xs uppercase tracking-[0.16em] text-navy/75 mb-2">Admin Email</label>
@@ -328,16 +238,84 @@
             <label class="block text-xs uppercase tracking-[0.16em] text-navy/75 mb-2">Password</label>
             <input type="password" id="admin-password" required minlength="6" placeholder="••••••••" class="w-full px-4 py-3.5 rounded-xl bg-cream border border-navy/20 text-navy focus:outline-none focus:border-navy" />
           </div>
-          <p id="auth-helper-text" class="text-xs text-navy/60 leading-relaxed hidden">
-            Create your private owner account once. Afterward, disable public registration in your Firebase console for maximum security.
-          </p>
-          <button type="submit" id="auth-submit-btn" class="w-full py-4 rounded-full bg-navy text-cream text-xs uppercase tracking-[0.22em] font-medium hover:bg-navy-light transition">
-            Access Dashboard
-          </button>
+          <button type="submit" id="auth-submit-btn" class="w-full py-4 rounded-full bg-navy text-cream text-xs uppercase tracking-[0.22em] font-medium hover:bg-navy-light transition">Access Dashboard</button>
         </form>
       </div>
     </section>
   </main>
+
+  <!-- CUSTOMER CHECKOUT MODAL (AUTOMATIC DELHIVERY AWB) -->
+  <div id="customer-checkout-modal" class="fixed inset-0 z-50 hidden bg-navy/70 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-4 overflow-y-auto">
+    <div class="bg-cream w-full max-w-lg rounded-t-3xl sm:rounded-3xl p-6 sm:p-8 shadow-2xl border border-navy/15 my-auto relative">
+      <button onclick="closeCustomerCheckout()" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-cream-dark text-navy flex items-center justify-center hover:bg-navy hover:text-cream transition">✕</button>
+      <div id="co-form-container">
+        <span class="text-[10px] uppercase tracking-[0.26em] text-gold-dark">Direct Express Checkout</span>
+        <h3 id="co-modal-prod-name" class="font-serif text-2xl sm:text-3xl text-navy mt-1">Product Name</h3>
+        <p id="co-modal-prod-price" class="text-xs text-navy/70 mt-1 mb-5">Price: ₹0 • Free Delhivery Shipping</p>
+        <form onsubmit="handleCustomerCheckoutSubmit(event)" class="space-y-3.5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-[11px] uppercase tracking-wider text-navy/75 mb-1">Full Name *</label>
+              <input type="text" id="co-cust-name" required placeholder="Your Full Name" class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-navy/15 text-navy" />
+            </div>
+            <div>
+              <label class="block text-[11px] uppercase tracking-wider text-navy/75 mb-1">10-Digit Mobile *</label>
+              <input type="tel" id="co-cust-phone" required maxlength="10" placeholder="9876543210" class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-navy/15 text-navy" />
+            </div>
+          </div>
+          <div>
+            <label class="block text-[11px] uppercase tracking-wider text-navy/75 mb-1">House / Street Address *</label>
+            <input type="text" id="co-cust-address" required placeholder="House/Flat No., Building, Street, Area" class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-navy/15 text-navy" />
+          </div>
+          <div class="grid grid-cols-3 gap-2.5">
+            <div>
+              <label class="block text-[11px] uppercase tracking-wider text-navy/75 mb-1">PIN Code *</label>
+              <input type="text" id="co-cust-pin" required maxlength="6" placeholder="500002" class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-navy/15 text-navy" />
+            </div>
+            <div>
+              <label class="block text-[11px] uppercase tracking-wider text-navy/75 mb-1">City *</label>
+              <input type="text" id="co-cust-city" required placeholder="Hyderabad" class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-navy/15 text-navy" />
+            </div>
+            <div>
+              <label class="block text-[11px] uppercase tracking-wider text-navy/75 mb-1">State *</label>
+              <input type="text" id="co-cust-state" required placeholder="Telangana" class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-navy/15 text-navy" />
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block text-[11px] uppercase tracking-wider text-navy/75 mb-1">Quantity</label>
+              <input type="number" id="co-cust-qty" min="1" max="10" value="1" oninput="updateCustomerCheckoutTotal()" class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-navy/15 text-navy" />
+            </div>
+            <div>
+              <label class="block text-[11px] uppercase tracking-wider text-navy/75 mb-1">Payment Mode</label>
+              <select id="co-cust-paymode" class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-navy/15 text-navy">
+                <option value="COD">Cash on Delivery (COD)</option>
+                <option value="Prepaid">Prepaid (UPI / Online)</option>
+              </select>
+            </div>
+          </div>
+          <div class="p-4 rounded-2xl bg-sage/50 border border-navy/10 flex items-center justify-between">
+            <span class="text-xs uppercase tracking-wider text-navy/75">Total Payable</span>
+            <span id="co-modal-total" class="font-serif text-2xl font-semibold text-navy">₹0</span>
+          </div>
+          <button type="submit" id="co-submit-btn" class="w-full py-4 rounded-full bg-navy text-cream text-xs uppercase tracking-[0.22em] font-medium hover:bg-navy-light transition shadow-md">Place Order &amp; Generate Delhivery AWB</button>
+        </form>
+      </div>
+      <div id="co-success-container" class="hidden text-center py-4">
+        <div class="w-14 h-14 rounded-full bg-sage text-navy flex items-center justify-center text-2xl mx-auto mb-4">✓</div>
+        <span class="text-[11px] uppercase tracking-[0.25em] text-gold-dark">Order Confirmed</span>
+        <h3 class="font-serif text-3xl text-navy mt-1 mb-2">Thank You for Your Order</h3>
+        <p class="text-xs text-navy/75 mb-6">Your Delhivery shipment has been registered automatically.</p>
+        <div class="bg-white border border-navy/10 rounded-2xl p-4 text-left space-y-2 text-xs mb-6">
+          <div class="flex justify-between"><span class="text-navy/60">Order ID:</span><strong id="co-succ-orderid" class="text-navy">—</strong></div>
+          <div class="flex justify-between"><span class="text-navy/60">Courier Partner:</span><strong class="text-navy">Delhivery</strong></div>
+          <div class="flex justify-between"><span class="text-navy/60">Delhivery AWB:</span><strong id="co-succ-awb" class="text-gold-dark font-mono">—</strong></div>
+          <div class="flex justify-between"><span class="text-navy/60">Total Amount:</span><strong id="co-succ-total" class="text-navy">—</strong></div>
+        </div>
+        <button onclick="closeCustomerCheckout()" class="w-full py-3.5 rounded-full bg-navy text-cream text-xs uppercase tracking-[0.2em]">Continue Shopping</button>
+      </div>
+    </div>
+  </div>
 
   <!-- PUBLIC FOOTER -->
   <footer id="public-footer" class="bg-navy text-cream py-14 px-4 sm:px-6 lg:px-8 border-t border-gold/20">
@@ -353,15 +331,11 @@
         <button onclick="navigate('contact')" class="hover:text-gold transition">Contact</button>
         <button onclick="navigate('admin')" class="hover:text-gold transition">Admin</button>
       </div>
-      <div class="text-xs text-cream/50 text-center md:text-right">
-        &copy; <span id="current-year"></span> KIVORA. All rights reserved.
-      </div>
+      <div class="text-xs text-cream/50 text-center md:text-right">&copy; <span id="current-year"></span> KIVORA. All rights reserved.</div>
     </div>
   </footer>
 
-  <!-- ===================================================================== -->
-  <!-- PRIVATE ADMIN DASHBOARD                                               -->
-  <!-- ===================================================================== -->
+  <!-- PRIVATE ADMIN DASHBOARD -->
   <div id="admin-dashboard-shell" class="hidden min-h-screen bg-cream flex flex-col">
     <header class="sticky top-0 z-40 bg-navy text-cream px-4 sm:px-6 h-16 flex items-center justify-between shadow-md">
       <div class="flex items-center gap-3">
@@ -372,41 +346,23 @@
         <span id="sync-status" class="hidden sm:inline-flex items-center gap-1.5 text-xs text-sage">
           <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Cloud Synced
         </span>
-        <button onclick="viewPublicSite()" class="px-3 py-2 rounded-lg border border-cream/25 text-xs uppercase tracking-wider text-cream hover:bg-white/10 transition">
-          Public Site
-        </button>
-        <button onclick="handleAdminLogout()" class="px-3 py-2 rounded-lg bg-gold text-navy text-xs uppercase tracking-wider font-medium hover:bg-cream transition">
-          Logout
-        </button>
+        <button onclick="viewPublicSite()" class="px-3 py-2 rounded-lg border border-cream/25 text-xs uppercase tracking-wider text-cream hover:bg-white/10 transition">Public Site</button>
+        <button onclick="handleAdminLogout()" class="px-3 py-2 rounded-lg bg-gold text-navy text-xs uppercase tracking-wider font-medium hover:bg-cream transition">Logout</button>
       </div>
     </header>
 
-    <!-- Admin Tab Navigation -->
     <nav class="bg-white border-b border-navy/10 px-4 sm:px-6 overflow-x-auto">
       <div class="max-w-7xl mx-auto flex space-x-2 sm:space-x-6 py-2">
-        <button onclick="switchAdminTab('overview')" data-admintab="overview" class="admin-tab-btn px-4 py-2.5 rounded-xl text-xs uppercase tracking-[0.15em] font-medium bg-navy text-cream whitespace-nowrap">
-          Dashboard
-        </button>
-        <button onclick="switchAdminTab('orders')" data-admintab="orders" class="admin-tab-btn px-4 py-2.5 rounded-xl text-xs uppercase tracking-[0.15em] font-medium text-navy/70 hover:bg-cream whitespace-nowrap">
-          Orders & Delivery
-        </button>
-        <button onclick="switchAdminTab('products')" data-admintab="products" class="admin-tab-btn px-4 py-2.5 rounded-xl text-xs uppercase tracking-[0.15em] font-medium text-navy/70 hover:bg-cream whitespace-nowrap">
-          Products
-        </button>
-        <button onclick="switchAdminTab('inventory')" data-admintab="inventory" class="admin-tab-btn px-4 py-2.5 rounded-xl text-xs uppercase tracking-[0.15em] font-medium text-navy/70 hover:bg-cream whitespace-nowrap">
-          Inventory & Stock
-        </button>
-        <button onclick="switchAdminTab('inbox')" data-admintab="inbox" class="admin-tab-btn px-4 py-2.5 rounded-xl text-xs uppercase tracking-[0.15em] font-medium text-navy/70 hover:bg-cream whitespace-nowrap">
-          Waitlist & Messages
-        </button>
-        <button onclick="switchAdminTab('roadmap')" data-admintab="roadmap" class="admin-tab-btn px-4 py-2.5 rounded-xl text-xs uppercase tracking-[0.15em] font-medium text-navy/70 hover:bg-cream whitespace-nowrap">
-          Future Modules
-        </button>
+        <button onclick="switchAdminTab('overview')" data-admintab="overview" class="admin-tab-btn px-4 py-2.5 rounded-xl text-xs uppercase tracking-[0.15em] font-medium bg-navy text-cream whitespace-nowrap">Dashboard</button>
+        <button onclick="switchAdminTab('orders')" data-admintab="orders" class="admin-tab-btn px-4 py-2.5 rounded-xl text-xs uppercase tracking-[0.15em] font-medium text-navy/70 hover:bg-cream whitespace-nowrap">Orders &amp; Delivery</button>
+        <button onclick="switchAdminTab('products')" data-admintab="products" class="admin-tab-btn px-4 py-2.5 rounded-xl text-xs uppercase tracking-[0.15em] font-medium text-navy/70 hover:bg-cream whitespace-nowrap">Products</button>
+        <button onclick="switchAdminTab('inventory')" data-admintab="inventory" class="admin-tab-btn px-4 py-2.5 rounded-xl text-xs uppercase tracking-[0.15em] font-medium text-navy/70 hover:bg-cream whitespace-nowrap">Inventory &amp; Stock</button>
+        <button onclick="switchAdminTab('inbox')" data-admintab="inbox" class="admin-tab-btn px-4 py-2.5 rounded-xl text-xs uppercase tracking-[0.15em] font-medium text-navy/70 hover:bg-cream whitespace-nowrap">Waitlist &amp; Messages</button>
+        <button onclick="switchAdminTab('roadmap')" data-admintab="roadmap" class="admin-tab-btn px-4 py-2.5 rounded-xl text-xs uppercase tracking-[0.15em] font-medium text-navy/70 hover:bg-cream whitespace-nowrap">Future Modules</button>
       </div>
     </nav>
 
     <div class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 py-6 sm:py-8">
-
       <!-- TAB 1: DASHBOARD OVERVIEW -->
       <div id="admintab-overview" class="admin-tab-panel space-y-6">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -423,72 +379,31 @@
               <option value="£">GBP (£)</option>
               <option value="AED ">AED</option>
             </select>
-            <button onclick="openOrderModal()" class="px-4 py-2.5 rounded-xl bg-gold text-navy text-xs uppercase tracking-wider font-medium hover:bg-gold-dark hover:text-cream transition">
-              + New Order
-            </button>
-            <button onclick="openProductModal()" class="px-4 py-2.5 rounded-xl bg-navy text-cream text-xs uppercase tracking-wider font-medium hover:bg-navy-light transition">
-              + Add Product
-            </button>
+            <button onclick="openOrderModal()" class="px-4 py-2.5 rounded-xl bg-gold text-navy text-xs uppercase tracking-wider font-medium hover:bg-gold-dark hover:text-cream transition">+ New Order</button>
+            <button onclick="openProductModal()" class="px-4 py-2.5 rounded-xl bg-navy text-cream text-xs uppercase tracking-wider font-medium hover:bg-navy-light transition">+ Add Product</button>
           </div>
         </div>
 
-        <!-- Inventory KPI Summary Cards -->
         <div class="grid grid-cols-2 lg:grid-cols-5 gap-4">
-          <div class="bg-white p-5 rounded-2xl border border-navy/10 shadow-sm">
-            <span class="text-[11px] uppercase tracking-wider text-navy/60">Total Products</span>
-            <div id="kpi-total-products" class="font-serif text-3xl sm:text-4xl text-navy mt-1">0</div>
-          </div>
-          <div class="bg-white p-5 rounded-2xl border border-navy/10 shadow-sm">
-            <span class="text-[11px] uppercase tracking-wider text-navy/60">Total Stock Units</span>
-            <div id="kpi-total-stock" class="font-serif text-3xl sm:text-4xl text-navy mt-1">0</div>
-          </div>
-          <div class="bg-white p-5 rounded-2xl border border-navy/10 shadow-sm">
-            <span class="text-[11px] uppercase tracking-wider text-navy/60">Low Stock Items</span>
-            <div id="kpi-low-stock" class="font-serif text-3xl sm:text-4xl text-amber-700 mt-1">0</div>
-          </div>
-          <div class="bg-white p-5 rounded-2xl border border-navy/10 shadow-sm">
-            <span class="text-[11px] uppercase tracking-wider text-navy/60">Inventory Value (Cost)</span>
-            <div id="kpi-inventory-value" class="font-serif text-2xl sm:text-3xl text-navy mt-1">₹0</div>
-          </div>
-          <div class="col-span-2 lg:col-span-1 bg-navy text-cream p-5 rounded-2xl shadow-sm">
-            <span class="text-[11px] uppercase tracking-wider text-gold">Potential Stock Profit</span>
-            <div id="kpi-potential-profit" class="font-serif text-2xl sm:text-3xl text-cream mt-1">₹0</div>
-          </div>
+          <div class="bg-white p-5 rounded-2xl border border-navy/10 shadow-sm"><span class="text-[11px] uppercase tracking-wider text-navy/60">Total Products</span><div id="kpi-total-products" class="font-serif text-3xl sm:text-4xl text-navy mt-1">0</div></div>
+          <div class="bg-white p-5 rounded-2xl border border-navy/10 shadow-sm"><span class="text-[11px] uppercase tracking-wider text-navy/60">Total Stock Units</span><div id="kpi-total-stock" class="font-serif text-3xl sm:text-4xl text-navy mt-1">0</div></div>
+          <div class="bg-white p-5 rounded-2xl border border-navy/10 shadow-sm"><span class="text-[11px] uppercase tracking-wider text-navy/60">Low Stock Items</span><div id="kpi-low-stock" class="font-serif text-3xl sm:text-4xl text-amber-700 mt-1">0</div></div>
+          <div class="bg-white p-5 rounded-2xl border border-navy/10 shadow-sm"><span class="text-[11px] uppercase tracking-wider text-navy/60">Inventory Value (Cost)</span><div id="kpi-inventory-value" class="font-serif text-2xl sm:text-3xl text-navy mt-1">₹0</div></div>
+          <div class="col-span-2 lg:col-span-1 bg-navy text-cream p-5 rounded-2xl shadow-sm"><span class="text-[11px] uppercase tracking-wider text-gold">Potential Stock Profit</span><div id="kpi-potential-profit" class="font-serif text-2xl sm:text-3xl text-cream mt-1">₹0</div></div>
         </div>
 
-        <!-- Orders & Delivery KPI Summary Cards -->
         <div>
           <div class="flex items-center justify-between mb-3">
-            <h3 class="font-serif text-2xl text-navy">Orders & Delivery Performance</h3>
-            <button onclick="switchAdminTab('orders')" class="text-xs uppercase tracking-wider text-gold-dark hover:text-navy font-medium">
-              Manage Orders &rarr;
-            </button>
+            <h3 class="font-serif text-2xl text-navy">Orders &amp; Delivery Performance</h3>
+            <button onclick="switchAdminTab('orders')" class="text-xs uppercase tracking-wider text-gold-dark hover:text-navy font-medium">Manage Orders &rarr;</button>
           </div>
           <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-            <div class="bg-white p-4 rounded-2xl border border-navy/10 shadow-sm">
-              <span class="text-[10px] uppercase tracking-wider text-navy/60">Total Orders</span>
-              <div id="dash-orders-total" class="font-serif text-3xl text-navy mt-1">0</div>
-            </div>
-            <div class="bg-white p-4 rounded-2xl border border-navy/10 shadow-sm">
-              <span class="text-[10px] uppercase tracking-wider text-amber-700">Pending Orders</span>
-              <div id="dash-orders-pending" class="font-serif text-3xl text-amber-700 mt-1">0</div>
-            </div>
-            <div class="bg-white p-4 rounded-2xl border border-navy/10 shadow-sm">
-              <span class="text-[10px] uppercase tracking-wider text-blue-800">Shipped Orders</span>
-              <div id="dash-orders-shipped" class="font-serif text-3xl text-blue-800 mt-1">0</div>
-            </div>
-            <div class="bg-white p-4 rounded-2xl border border-navy/10 shadow-sm">
-              <span class="text-[10px] uppercase tracking-wider text-emerald-700">Delivered Orders</span>
-              <div id="dash-orders-delivered" class="font-serif text-3xl text-emerald-700 mt-1">0</div>
-            </div>
-            <div class="bg-white p-4 rounded-2xl border border-navy/10 shadow-sm">
-              <span class="text-[10px] uppercase tracking-wider text-navy/60">Total Delivery Expense</span>
-              <div id="dash-orders-delivery-exp" class="font-serif text-2xl text-navy mt-1">₹0</div>
-            </div>
-            <div class="bg-navy text-cream p-4 rounded-2xl shadow-sm">
-              <span class="text-[10px] uppercase tracking-wider text-gold">Total Net Profit</span>
-              <div id="dash-orders-net-profit" class="font-serif text-2xl text-cream mt-1">₹0</div>
-            </div>
+            <div class="bg-white p-4 rounded-2xl border border-navy/10 shadow-sm"><span class="text-[10px] uppercase tracking-wider text-navy/60">Total Orders</span><div id="dash-orders-total" class="font-serif text-3xl text-navy mt-1">0</div></div>
+            <div class="bg-white p-4 rounded-2xl border border-navy/10 shadow-sm"><span class="text-[10px] uppercase tracking-wider text-amber-700">Pending Orders</span><div id="dash-orders-pending" class="font-serif text-3xl text-amber-700 mt-1">0</div></div>
+            <div class="bg-white p-4 rounded-2xl border border-navy/10 shadow-sm"><span class="text-[10px] uppercase tracking-wider text-blue-800">Shipped Orders</span><div id="dash-orders-shipped" class="font-serif text-3xl text-blue-800 mt-1">0</div></div>
+            <div class="bg-white p-4 rounded-2xl border border-navy/10 shadow-sm"><span class="text-[10px] uppercase tracking-wider text-emerald-700">Delivered Orders</span><div id="dash-orders-delivered" class="font-serif text-3xl text-emerald-700 mt-1">0</div></div>
+            <div class="bg-white p-4 rounded-2xl border border-navy/10 shadow-sm"><span class="text-[10px] uppercase tracking-wider text-navy/60">Total Delivery Expense</span><div id="dash-orders-delivery-exp" class="font-serif text-2xl text-navy mt-1">₹0</div></div>
+            <div class="bg-navy text-cream p-4 rounded-2xl shadow-sm"><span class="text-[10px] uppercase tracking-wider text-gold">Total Net Profit</span><div id="dash-orders-net-profit" class="font-serif text-2xl text-cream mt-1">₹0</div></div>
           </div>
         </div>
 
@@ -498,19 +413,14 @@
               <h3 class="font-serif text-2xl text-navy">Low Stock Alerts</h3>
               <span class="text-xs px-2.5 py-1 rounded-full bg-amber-100 text-amber-800">Threshold &le; 5 units</span>
             </div>
-            <div id="dashboard-low-stock-list" class="space-y-3 text-sm text-navy/70">
-              <p class="text-xs text-navy/50 py-4 text-center">No low-stock alerts right now.</p>
-            </div>
+            <div id="dashboard-low-stock-list" class="space-y-3 text-sm text-navy/70"><p class="text-xs text-navy/50 py-4 text-center">No low-stock alerts right now.</p></div>
           </div>
-
           <div class="bg-white p-6 rounded-2xl border border-navy/10 shadow-sm">
             <div class="flex items-center justify-between mb-4">
               <h3 class="font-serif text-2xl text-navy">Recent Activity</h3>
-              <span class="text-xs text-navy/50">Live Stock & Product Log</span>
+              <span class="text-xs text-navy/50">Live Stock &amp; Product Log</span>
             </div>
-            <div id="dashboard-activity-list" class="space-y-3 max-h-72 overflow-y-auto pr-1">
-              <p class="text-xs text-navy/50 py-4 text-center">No activity recorded yet. Add your first product to begin.</p>
-            </div>
+            <div id="dashboard-activity-list" class="space-y-3 max-h-72 overflow-y-auto pr-1"><p class="text-xs text-navy/50 py-4 text-center">No activity recorded yet. Add your first product to begin.</p></div>
           </div>
         </div>
       </div>
@@ -519,54 +429,27 @@
       <div id="admintab-orders" class="admin-tab-panel hidden space-y-6">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <h2 class="font-serif text-3xl text-navy">Orders & Delivery Management</h2>
+            <h2 class="font-serif text-3xl text-navy">Orders &amp; Delivery Management</h2>
             <p class="text-xs text-navy/65">Track customer orders, Delhivery courier charges, packaging costs, AWB tracking, and real net profit.</p>
           </div>
-          <button onclick="openOrderModal()" class="w-full sm:w-auto px-6 py-3.5 rounded-full bg-navy text-cream text-xs uppercase tracking-[0.2em] font-medium hover:bg-navy-light transition shadow-sm">
-            + Create New Order
-          </button>
+          <div class="flex flex-wrap gap-2">
+            <button onclick="syncWebsiteOrdersToAdmin()" class="px-5 py-3.5 rounded-full border border-navy text-navy text-xs uppercase tracking-[0.18em] font-medium hover:bg-navy hover:text-cream transition">Sync Website Orders</button>
+            <button onclick="openOrderModal()" class="px-6 py-3.5 rounded-full bg-navy text-cream text-xs uppercase tracking-[0.2em] font-medium hover:bg-navy-light transition shadow-sm">+ Create New Order</button>
+          </div>
         </div>
 
         <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
-          <div class="bg-white p-5 rounded-2xl border border-navy/10 shadow-sm">
-            <span class="text-[11px] uppercase tracking-wider text-navy/60">Delivery Collected</span>
-            <div id="ord-kpi-collected" class="font-serif text-2xl sm:text-3xl text-navy mt-1">₹0</div>
-            <span class="text-[11px] text-navy/50">Paid by customers</span>
-          </div>
-          <div class="bg-white p-5 rounded-2xl border border-navy/10 shadow-sm">
-            <span class="text-[11px] uppercase tracking-wider text-navy/60">Actual Delivery Expense</span>
-            <div id="ord-kpi-expense" class="font-serif text-2xl sm:text-3xl text-navy mt-1">₹0</div>
-            <span class="text-[11px] text-navy/50">Paid to courier partners</span>
-          </div>
-          <div class="bg-white p-5 rounded-2xl border border-navy/10 shadow-sm">
-            <span class="text-[11px] uppercase tracking-wider text-navy/60">Delivery Difference</span>
-            <div id="ord-kpi-diff" class="font-serif text-2xl sm:text-3xl text-navy mt-1">₹0</div>
-            <span class="text-[11px] text-navy/50">Collected &minus; Actual courier</span>
-          </div>
-          <div class="bg-navy text-cream p-5 rounded-2xl shadow-sm">
-            <span class="text-[11px] uppercase tracking-wider text-gold">Total Net Order Profit</span>
-            <div id="ord-kpi-profit" class="font-serif text-2xl sm:text-3xl text-cream mt-1">₹0</div>
-            <span class="text-[11px] text-cream/65">After product, courier &amp; packing</span>
-          </div>
+          <div class="bg-white p-5 rounded-2xl border border-navy/10 shadow-sm"><span class="text-[11px] uppercase tracking-wider text-navy/60">Delivery Collected</span><div id="ord-kpi-collected" class="font-serif text-2xl sm:text-3xl text-navy mt-1">₹0</div><span class="text-[11px] text-navy/50">Paid by customers</span></div>
+          <div class="bg-white p-5 rounded-2xl border border-navy/10 shadow-sm"><span class="text-[11px] uppercase tracking-wider text-navy/60">Actual Delivery Expense</span><div id="ord-kpi-expense" class="font-serif text-2xl sm:text-3xl text-navy mt-1">₹0</div><span class="text-[11px] text-navy/50">Paid to courier partners</span></div>
+          <div class="bg-white p-5 rounded-2xl border border-navy/10 shadow-sm"><span class="text-[11px] uppercase tracking-wider text-navy/60">Delivery Difference</span><div id="ord-kpi-diff" class="font-serif text-2xl sm:text-3xl text-navy mt-1">₹0</div><span class="text-[11px] text-navy/50">Collected &minus; Actual courier</span></div>
+          <div class="bg-navy text-cream p-5 rounded-2xl shadow-sm"><span class="text-[11px] uppercase tracking-wider text-gold">Total Net Order Profit</span><div id="ord-kpi-profit" class="font-serif text-2xl sm:text-3xl text-cream mt-1">₹0</div><span class="text-[11px] text-cream/65">After product, courier &amp; packing</span></div>
         </div>
 
         <div class="grid grid-cols-4 gap-3">
-          <div class="bg-white px-4 py-3 rounded-xl border border-navy/10 text-center">
-            <span class="block text-[10px] uppercase tracking-wider text-navy/55">Total</span>
-            <span id="ord-count-total" class="font-serif text-2xl text-navy font-semibold">0</span>
-          </div>
-          <div class="bg-white px-4 py-3 rounded-xl border border-navy/10 text-center">
-            <span class="block text-[10px] uppercase tracking-wider text-amber-700">Pending</span>
-            <span id="ord-count-pending" class="font-serif text-2xl text-amber-700 font-semibold">0</span>
-          </div>
-          <div class="bg-white px-4 py-3 rounded-xl border border-navy/10 text-center">
-            <span class="block text-[10px] uppercase tracking-wider text-blue-800">Shipped</span>
-            <span id="ord-count-shipped" class="font-serif text-2xl text-blue-800 font-semibold">0</span>
-          </div>
-          <div class="bg-white px-4 py-3 rounded-xl border border-navy/10 text-center">
-            <span class="block text-[10px] uppercase tracking-wider text-emerald-700">Delivered</span>
-            <span id="ord-count-delivered" class="font-serif text-2xl text-emerald-700 font-semibold">0</span>
-          </div>
+          <div class="bg-white px-4 py-3 rounded-xl border border-navy/10 text-center"><span class="block text-[10px] uppercase tracking-wider text-navy/55">Total</span><span id="ord-count-total" class="font-serif text-2xl text-navy font-semibold">0</span></div>
+          <div class="bg-white px-4 py-3 rounded-xl border border-navy/10 text-center"><span class="block text-[10px] uppercase tracking-wider text-amber-700">Pending</span><span id="ord-count-pending" class="font-serif text-2xl text-amber-700 font-semibold">0</span></div>
+          <div class="bg-white px-4 py-3 rounded-xl border border-navy/10 text-center"><span class="block text-[10px] uppercase tracking-wider text-blue-800">Shipped</span><span id="ord-count-shipped" class="font-serif text-2xl text-blue-800 font-semibold">0</span></div>
+          <div class="bg-white px-4 py-3 rounded-xl border border-navy/10 text-center"><span class="block text-[10px] uppercase tracking-wider text-emerald-700">Delivered</span><span id="ord-count-delivered" class="font-serif text-2xl text-emerald-700 font-semibold">0</span></div>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 bg-white p-4 rounded-2xl border border-navy/10">
@@ -595,11 +478,9 @@
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
             <h2 class="font-serif text-3xl text-navy">Product Catalog</h2>
-            <p class="text-xs text-navy/65">Add, edit, price, and organize your KIVORA inventory.</p>
+            <p class="text-xs text-navy/65">Add, edit, price, and organize your KIVORA inventory &amp; live public storefront.</p>
           </div>
-          <button onclick="openProductModal()" class="w-full sm:w-auto px-6 py-3.5 rounded-full bg-navy text-cream text-xs uppercase tracking-[0.2em] font-medium hover:bg-navy-light transition shadow-sm">
-            + Add New Product
-          </button>
+          <button onclick="openProductModal()" class="w-full sm:w-auto px-6 py-3.5 rounded-full bg-navy text-cream text-xs uppercase tracking-[0.2em] font-medium hover:bg-navy-light transition shadow-sm">+ Add New Product</button>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 bg-white p-4 rounded-2xl border border-navy/10">
@@ -610,11 +491,11 @@
             <select id="product-category-filter" onchange="renderProducts()" class="w-full px-4 py-3 rounded-xl bg-cream border border-navy/15 text-navy focus:outline-none focus:border-navy">
               <option value="ALL">All Categories</option>
               <option value="Jewelry">Jewelry</option>
-              <option value="Bags & Clutches">Bags & Clutches</option>
+              <option value="Bags & Clutches">Bags &amp; Clutches</option>
               <option value="Watches">Watches</option>
               <option value="Eyewear">Eyewear</option>
               <option value="Hair Accessories">Hair Accessories</option>
-              <option value="Belts & Scarves">Belts & Scarves</option>
+              <option value="Belts & Scarves">Belts &amp; Scarves</option>
               <option value="Other">Other</option>
             </select>
           </div>
@@ -626,10 +507,9 @@
       <!-- TAB 4: INVENTORY & STOCK MANAGEMENT -->
       <div id="admintab-inventory" class="admin-tab-panel hidden space-y-6">
         <div>
-          <h2 class="font-serif text-3xl text-navy">Inventory & Stock Control</h2>
+          <h2 class="font-serif text-3xl text-navy">Inventory &amp; Stock Control</h2>
           <p class="text-xs text-navy/65">Quickly add incoming stock, deduct sold pieces, and audit stock history.</p>
         </div>
-
         <div class="bg-white rounded-2xl border border-navy/10 overflow-hidden shadow-sm">
           <div class="p-5 border-b border-navy/10 flex items-center justify-between">
             <h3 class="font-serif text-2xl text-navy">Live Stock Levels</h3>
@@ -637,16 +517,13 @@
           </div>
           <div id="inventory-list" class="divide-y divide-navy/10"></div>
         </div>
-
         <div class="bg-white rounded-2xl border border-navy/10 overflow-hidden shadow-sm">
-          <div class="p-5 border-b border-navy/10">
-            <h3 class="font-serif text-2xl text-navy">Stock Movement History</h3>
-          </div>
+          <div class="p-5 border-b border-navy/10"><h3 class="font-serif text-2xl text-navy">Stock Movement History</h3></div>
           <div class="overflow-x-auto">
             <table class="w-full text-left border-collapse">
               <thead>
                 <tr class="bg-cream text-[11px] uppercase tracking-wider text-navy/70 border-b border-navy/10">
-                  <th class="py-3.5 px-4">Date & Time</th>
+                  <th class="py-3.5 px-4">Date &amp; Time</th>
                   <th class="py-3.5 px-4">Product</th>
                   <th class="py-3.5 px-4">Action</th>
                   <th class="py-3.5 px-4">Change</th>
@@ -664,15 +541,11 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <div class="bg-white p-6 rounded-2xl border border-navy/10">
             <h3 class="font-serif text-2xl text-navy mb-4">Launch Waitlist Subscribers</h3>
-            <div id="waitlist-admin-list" class="divide-y divide-navy/10 text-sm">
-              <p class="text-xs text-navy/50 py-4">No subscribers yet.</p>
-            </div>
+            <div id="waitlist-admin-list" class="divide-y divide-navy/10 text-sm"><p class="text-xs text-navy/50 py-4">No subscribers yet.</p></div>
           </div>
           <div class="bg-white p-6 rounded-2xl border border-navy/10">
             <h3 class="font-serif text-2xl text-navy mb-4">Customer Inquiries</h3>
-            <div id="messages-admin-list" class="divide-y divide-navy/10 text-sm">
-              <p class="text-xs text-navy/50 py-4">No messages received yet.</p>
-            </div>
+            <div id="messages-admin-list" class="divide-y divide-navy/10 text-sm"><p class="text-xs text-navy/50 py-4">No messages received yet.</p></div>
           </div>
         </div>
       </div>
@@ -682,62 +555,38 @@
         <div class="bg-white p-6 sm:p-8 rounded-2xl border border-navy/10">
           <span class="text-xs uppercase tracking-[0.22em] text-gold-dark">Scalable Architecture</span>
           <h2 class="font-serif text-3xl text-navy mt-1 mb-2">Ready for Phase 2 Expansion</h2>
-          <p class="text-sm text-navy/70 mb-6">
-            Your KIVORA database schema is structured cleanly so these business modules can be activated seamlessly as your brand scales:
-          </p>
+          <p class="text-sm text-navy/70 mb-6">Your KIVORA database schema is structured cleanly so these business modules can be activated seamlessly as your brand scales:</p>
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             <div class="p-4 rounded-xl bg-sage/35 border border-navy/10">
-              <div class="flex items-center justify-between">
-                <h4 class="font-medium text-navy text-sm">Orders & Delivery Management</h4>
-                <span class="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded bg-navy text-gold">Active</span>
-              </div>
-              <p class="text-xs text-navy/65 mt-1">Track customer orders, Delhivery charges, packaging costs, AWB numbers, and net order profit.</p>
+              <div class="flex items-center justify-between"><h4 class="font-medium text-navy text-sm">Orders &amp; Delhivery Automation</h4><span class="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded bg-navy text-gold">Active</span></div>
+              <p class="text-xs text-navy/65 mt-1">Customer orders automatically create Delhivery AWBs and sync to your dashboard.</p>
             </div>
-            <div class="p-4 rounded-xl bg-cream border border-navy/10">
-              <h4 class="font-medium text-navy text-sm">Daily Sales & Monthly Profit Reports</h4>
-              <p class="text-xs text-navy/65 mt-1">Automated revenue vs. COGS breakdowns by day and month.</p>
-            </div>
-            <div class="p-4 rounded-xl bg-cream border border-navy/10">
-              <h4 class="font-medium text-navy text-sm">Offers & Discount Codes</h4>
-              <p class="text-xs text-navy/65 mt-1">Promotional pricing rules and seasonal bundle discounts.</p>
-            </div>
-            <div class="p-4 rounded-xl bg-cream border border-navy/10">
-              <h4 class="font-medium text-navy text-sm">Multiple Collections</h4>
-              <p class="text-xs text-navy/65 mt-1">Group products into curated seasonal drops on the public storefront.</p>
-            </div>
+            <div class="p-4 rounded-xl bg-cream border border-navy/10"><h4 class="font-medium text-navy text-sm">Daily Sales &amp; Monthly Profit Reports</h4><p class="text-xs text-navy/65 mt-1">Automated revenue vs. COGS breakdowns by day and month.</p></div>
+            <div class="p-4 rounded-xl bg-cream border border-navy/10"><h4 class="font-medium text-navy text-sm">Offers &amp; Discount Codes</h4><p class="text-xs text-navy/65 mt-1">Promotional pricing rules and seasonal bundle discounts.</p></div>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 
-  <!-- ===================================================================== -->
-  <!-- ADD / EDIT ORDER MODAL                                                -->
-  <!-- ===================================================================== -->
+  <!-- ADD / EDIT ORDER MODAL -->
   <div id="order-modal" class="fixed inset-0 z-50 hidden bg-navy/60 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-4">
     <div class="bg-cream w-full max-w-2xl rounded-t-3xl sm:rounded-3xl max-h-[92vh] overflow-y-auto p-6 sm:p-8 shadow-2xl border border-navy/15">
       <div class="flex items-center justify-between pb-4 border-b border-navy/10 mb-5">
         <div>
-          <span class="text-[10px] uppercase tracking-[0.22em] text-gold-dark">Order & Fulfillment</span>
+          <span class="text-[10px] uppercase tracking-[0.22em] text-gold-dark">Order &amp; Fulfillment</span>
           <h3 id="order-modal-title" class="font-serif text-3xl text-navy">Create New Order</h3>
         </div>
-        <button onclick="closeOrderModal()" class="p-2 rounded-full hover:bg-navy/10 text-navy">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/></svg>
-        </button>
+        <button onclick="closeOrderModal()" class="p-2 rounded-full hover:bg-navy/10 text-navy"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/></svg></button>
       </div>
-
       <form id="order-form" onsubmit="handleSaveOrder(event)" class="space-y-4">
         <input type="hidden" id="ord-doc-id" />
-
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label class="block text-xs uppercase tracking-wider text-navy/75 mb-1.5">Unique Order ID *</label>
             <div class="flex gap-2">
               <input type="text" id="ord-number" required placeholder="ORD-1001" class="w-full px-3.5 py-3 rounded-xl bg-white border border-navy/15 text-navy uppercase focus:outline-none focus:border-navy" />
-              <button type="button" onclick="generateOrderId()" class="px-3 py-2 rounded-xl bg-sage text-navy text-xs font-medium whitespace-nowrap hover:bg-sage-dark transition">
-                Auto
-              </button>
+              <button type="button" onclick="generateOrderId()" class="px-3 py-2 rounded-xl bg-sage text-navy text-xs font-medium whitespace-nowrap hover:bg-sage-dark transition">Auto</button>
             </div>
           </div>
           <div>
@@ -749,85 +598,40 @@
             </select>
           </div>
         </div>
-
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div>
-            <label class="block text-xs uppercase tracking-wider text-navy/75 mb-1.5">Customer Name *</label>
-            <input type="text" id="ord-cust-name" required placeholder="Full name" class="w-full px-4 py-3 rounded-xl bg-white border border-navy/15 text-navy focus:outline-none focus:border-navy" />
-          </div>
-          <div>
-            <label class="block text-xs uppercase tracking-wider text-navy/75 mb-1.5">Phone / WhatsApp *</label>
-            <input type="tel" id="ord-cust-phone" required placeholder="+91 98765 43210" class="w-full px-4 py-3 rounded-xl bg-white border border-navy/15 text-navy focus:outline-none focus:border-navy" />
-          </div>
+          <div><label class="block text-xs uppercase tracking-wider text-navy/75 mb-1.5">Customer Name *</label><input type="text" id="ord-cust-name" required placeholder="Full name" class="w-full px-4 py-3 rounded-xl bg-white border border-navy/15 text-navy focus:outline-none focus:border-navy" /></div>
+          <div><label class="block text-xs uppercase tracking-wider text-navy/75 mb-1.5">Phone / WhatsApp *</label><input type="tel" id="ord-cust-phone" required placeholder="+91 98765 43210" class="w-full px-4 py-3 rounded-xl bg-white border border-navy/15 text-navy focus:outline-none focus:border-navy" /></div>
         </div>
-
-        <div>
-          <label class="block text-xs uppercase tracking-wider text-navy/75 mb-1.5">Delivery Address *</label>
-          <textarea id="ord-cust-address" rows="2" required placeholder="House/Flat no., Street, City, State, PIN Code" class="w-full px-4 py-3 rounded-xl bg-white border border-navy/15 text-navy focus:outline-none focus:border-navy"></textarea>
-        </div>
-
+        <div><label class="block text-xs uppercase tracking-wider text-navy/75 mb-1.5">Delivery Address *</label><textarea id="ord-cust-address" rows="2" required placeholder="House/Flat no., Street, City, State, PIN Code" class="w-full px-4 py-3 rounded-xl bg-white border border-navy/15 text-navy focus:outline-none focus:border-navy"></textarea></div>
         <div class="p-4 rounded-2xl bg-white border border-navy/10 space-y-3">
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <div class="sm:col-span-2">
               <label class="block text-xs uppercase tracking-wider text-navy/75 mb-1.5">Select Product *</label>
-              <select id="ord-product-select" onchange="handleOrderProductChange()" class="w-full px-3.5 py-3 rounded-xl bg-cream border border-navy/15 text-navy focus:outline-none focus:border-navy">
-                <option value="">-- Choose from Inventory or Custom --</option>
-              </select>
+              <select id="ord-product-select" onchange="handleOrderProductChange()" class="w-full px-3.5 py-3 rounded-xl bg-cream border border-navy/15 text-navy focus:outline-none focus:border-navy"><option value="">-- Choose from Inventory or Custom --</option></select>
             </div>
-            <div>
-              <label class="block text-xs uppercase tracking-wider text-navy/75 mb-1.5">Quantity *</label>
-              <input type="number" id="ord-qty" min="1" step="1" value="1" required oninput="handleOrderQtyOrPriceChange()" class="w-full px-3.5 py-3 rounded-xl bg-cream border border-navy/15 text-navy focus:outline-none focus:border-navy" />
-            </div>
+            <div><label class="block text-xs uppercase tracking-wider text-navy/75 mb-1.5">Quantity *</label><input type="number" id="ord-qty" min="1" step="1" value="1" required oninput="handleOrderQtyOrPriceChange()" class="w-full px-3.5 py-3 rounded-xl bg-cream border border-navy/15 text-navy focus:outline-none focus:border-navy" /></div>
           </div>
-
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            <div>
-              <label class="block text-[11px] uppercase tracking-wider text-navy/75 mb-1">Product Name *</label>
-              <input type="text" id="ord-prod-name" required placeholder="Product title" class="w-full px-3.5 py-2.5 rounded-xl bg-cream border border-navy/15 text-navy focus:outline-none focus:border-navy" />
-            </div>
-            <div>
-              <label class="block text-[11px] uppercase tracking-wider text-navy/75 mb-1">Total Buying Cost *</label>
-              <input type="number" id="ord-buy-amount" step="0.01" min="0" required oninput="recalculateOrderModalPreview()" placeholder="0.00" class="w-full px-3.5 py-2.5 rounded-xl bg-cream border border-navy/15 text-navy focus:outline-none focus:border-navy" />
-            </div>
-            <div>
-              <label class="block text-[11px] uppercase tracking-wider text-navy/75 mb-1">Total Selling Amount *</label>
-              <input type="number" id="ord-sell-amount" step="0.01" min="0" required oninput="recalculateOrderModalPreview()" placeholder="0.00" class="w-full px-3.5 py-2.5 rounded-xl bg-cream border border-navy/15 text-navy focus:outline-none focus:border-navy" />
-            </div>
+            <div><label class="block text-[11px] uppercase tracking-wider text-navy/75 mb-1">Product Name *</label><input type="text" id="ord-prod-name" required placeholder="Product title" class="w-full px-3.5 py-2.5 rounded-xl bg-cream border border-navy/15 text-navy focus:outline-none focus:border-navy" /></div>
+            <div><label class="block text-[11px] uppercase tracking-wider text-navy/75 mb-1">Total Buying Cost *</label><input type="number" id="ord-buy-amount" step="0.01" min="0" required oninput="recalculateOrderModalPreview()" placeholder="0.00" class="w-full px-3.5 py-2.5 rounded-xl bg-cream border border-navy/15 text-navy focus:outline-none focus:border-navy" /></div>
+            <div><label class="block text-[11px] uppercase tracking-wider text-navy/75 mb-1">Total Selling Amount *</label><input type="number" id="ord-sell-amount" step="0.01" min="0" required oninput="recalculateOrderModalPreview()" placeholder="0.00" class="w-full px-3.5 py-2.5 rounded-xl bg-cream border border-navy/15 text-navy focus:outline-none focus:border-navy" /></div>
           </div>
-
           <div id="ord-stock-deduct-row" class="flex items-center gap-2 pt-1">
             <input type="checkbox" id="ord-deduct-stock" checked class="w-4 h-4 rounded accent-navy" />
             <label for="ord-deduct-stock" class="text-xs text-navy/75">Automatically deduct ordered quantity from inventory stock</label>
           </div>
         </div>
-
         <div class="p-4 rounded-2xl bg-sage/30 border border-navy/10 space-y-3">
           <span class="block text-xs uppercase tracking-wider text-navy font-medium">Delivery &amp; Packaging Breakdown</span>
           <div class="grid grid-cols-3 gap-3">
-            <div>
-              <label class="block text-[10px] sm:text-[11px] uppercase tracking-wider text-navy/75 mb-1">Delivery Collected *</label>
-              <input type="number" id="ord-del-collected" step="0.01" min="0" value="0" required oninput="recalculateOrderModalPreview()" class="w-full px-3 py-2.5 rounded-xl bg-white border border-navy/15 text-navy focus:outline-none focus:border-navy" />
-            </div>
-            <div>
-              <label class="block text-[10px] sm:text-[11px] uppercase tracking-wider text-navy/75 mb-1">Actual Courier Paid *</label>
-              <input type="number" id="ord-del-actual" step="0.01" min="0" value="0" required oninput="recalculateOrderModalPreview()" class="w-full px-3 py-2.5 rounded-xl bg-white border border-navy/15 text-navy focus:outline-none focus:border-navy" />
-            </div>
-            <div>
-              <label class="block text-[10px] sm:text-[11px] uppercase tracking-wider text-navy/75 mb-1">Packaging Cost *</label>
-              <input type="number" id="ord-packaging" step="0.01" min="0" value="0" required oninput="recalculateOrderModalPreview()" class="w-full px-3 py-2.5 rounded-xl bg-white border border-navy/15 text-navy focus:outline-none focus:border-navy" />
-            </div>
+            <div><label class="block text-[10px] sm:text-[11px] uppercase tracking-wider text-navy/75 mb-1">Delivery Collected *</label><input type="number" id="ord-del-collected" step="0.01" min="0" value="0" required oninput="recalculateOrderModalPreview()" class="w-full px-3 py-2.5 rounded-xl bg-white border border-navy/15 text-navy focus:outline-none focus:border-navy" /></div>
+            <div><label class="block text-[10px] sm:text-[11px] uppercase tracking-wider text-navy/75 mb-1">Actual Courier Paid *</label><input type="number" id="ord-del-actual" step="0.01" min="0" value="0" required oninput="recalculateOrderModalPreview()" class="w-full px-3 py-2.5 rounded-xl bg-white border border-navy/15 text-navy focus:outline-none focus:border-navy" /></div>
+            <div><label class="block text-[10px] sm:text-[11px] uppercase tracking-wider text-navy/75 mb-1">Packaging Cost *</label><input type="number" id="ord-packaging" step="0.01" min="0" value="0" required oninput="recalculateOrderModalPreview()" class="w-full px-3 py-2.5 rounded-xl bg-white border border-navy/15 text-navy focus:outline-none focus:border-navy" /></div>
           </div>
         </div>
-
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-          <div>
-            <label class="block text-xs uppercase tracking-wider text-navy/75 mb-1.5">Courier Partner</label>
-            <input type="text" id="ord-courier" value="Delhivery" placeholder="e.g., Delhivery" class="w-full px-3.5 py-3 rounded-xl bg-white border border-navy/15 text-navy focus:outline-none focus:border-navy" />
-          </div>
-          <div>
-            <label class="block text-xs uppercase tracking-wider text-navy/75 mb-1.5">AWB / Tracking No.</label>
-            <input type="text" id="ord-awb" placeholder="Enter tracking ID" class="w-full px-3.5 py-3 rounded-xl bg-white border border-navy/15 text-navy focus:outline-none focus:border-navy" />
-          </div>
+          <div><label class="block text-xs uppercase tracking-wider text-navy/75 mb-1.5">Courier Partner</label><input type="text" id="ord-courier" value="Delhivery" placeholder="e.g., Delhivery" class="w-full px-3.5 py-3 rounded-xl bg-white border border-navy/15 text-navy focus:outline-none focus:border-navy" /></div>
+          <div><label class="block text-xs uppercase tracking-wider text-navy/75 mb-1.5">AWB / Tracking No.</label><input type="text" id="ord-awb" placeholder="Enter tracking ID" class="w-full px-3.5 py-3 rounded-xl bg-white border border-navy/15 text-navy focus:outline-none focus:border-navy" /></div>
           <div>
             <label class="block text-xs uppercase tracking-wider text-navy/75 mb-1.5">Order Status *</label>
             <select id="ord-status" required class="w-full px-3.5 py-3 rounded-xl bg-white border border-navy/15 text-navy focus:outline-none focus:border-navy">
@@ -841,170 +645,87 @@
             </select>
           </div>
         </div>
-
         <div class="bg-navy text-cream p-4 rounded-2xl grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
-          <div>
-            <span class="block text-[10px] uppercase tracking-wider text-cream/65">Customer Pays</span>
-            <span id="ord-calc-customer" class="font-serif text-xl text-cream">₹0</span>
-          </div>
-          <div>
-            <span class="block text-[10px] uppercase tracking-wider text-cream/65">Business Cost</span>
-            <span id="ord-calc-cost" class="font-serif text-xl text-cream">₹0</span>
-          </div>
-          <div>
-            <span class="block text-[10px] uppercase tracking-wider text-cream/65">Delivery Diff</span>
-            <span id="ord-calc-del-diff" class="font-serif text-xl text-sage">₹0</span>
-          </div>
-          <div>
-            <span class="block text-[10px] uppercase tracking-wider text-cream/65">Net Profit</span>
-            <span id="ord-calc-net-profit" class="font-serif text-xl text-gold">₹0</span>
-          </div>
+          <div><span class="block text-[10px] uppercase tracking-wider text-cream/65">Customer Pays</span><span id="ord-calc-customer" class="font-serif text-xl text-cream">₹0</span></div>
+          <div><span class="block text-[10px] uppercase tracking-wider text-cream/65">Business Cost</span><span id="ord-calc-cost" class="font-serif text-xl text-cream">₹0</span></div>
+          <div><span class="block text-[10px] uppercase tracking-wider text-cream/65">Delivery Diff</span><span id="ord-calc-del-diff" class="font-serif text-xl text-sage">₹0</span></div>
+          <div><span class="block text-[10px] uppercase tracking-wider text-cream/65">Net Profit</span><span id="ord-calc-net-profit" class="font-serif text-xl text-gold">₹0</span></div>
         </div>
-
         <div class="pt-2 flex gap-3">
-          <button type="button" onclick="closeOrderModal()" class="w-1/3 py-3.5 rounded-full border border-navy/25 text-navy text-xs uppercase tracking-wider font-medium">
-            Cancel
-          </button>
-          <button type="submit" id="save-order-btn" class="w-2/3 py-3.5 rounded-full bg-navy text-cream text-xs uppercase tracking-[0.2em] font-medium hover:bg-navy-light transition">
-            Save Order
-          </button>
+          <button type="button" onclick="closeOrderModal()" class="w-1/3 py-3.5 rounded-full border border-navy/25 text-navy text-xs uppercase tracking-wider font-medium">Cancel</button>
+          <button type="submit" id="save-order-btn" class="w-2/3 py-3.5 rounded-full bg-navy text-cream text-xs uppercase tracking-[0.2em] font-medium hover:bg-navy-light transition">Save Order</button>
         </div>
       </form>
     </div>
   </div>
 
-  <!-- ===================================================================== -->
-  <!-- ADD / EDIT PRODUCT MODAL                                              -->
-  <!-- ===================================================================== -->
+  <!-- ADD / EDIT PRODUCT MODAL -->
   <div id="product-modal" class="fixed inset-0 z-50 hidden bg-navy/60 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-4">
     <div class="bg-cream w-full max-w-xl rounded-t-3xl sm:rounded-3xl max-h-[92vh] overflow-y-auto p-6 sm:p-8 shadow-2xl border border-navy/15">
       <div class="flex items-center justify-between pb-4 border-b border-navy/10 mb-5">
         <h3 id="product-modal-title" class="font-serif text-3xl text-navy">Add New Product</h3>
-        <button onclick="closeProductModal()" class="p-2 rounded-full hover:bg-navy/10 text-navy">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/></svg>
-        </button>
+        <button onclick="closeProductModal()" class="p-2 rounded-full hover:bg-navy/10 text-navy"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/></svg></button>
       </div>
-
       <form id="product-form" onsubmit="handleSaveProduct(event)" class="space-y-4">
         <input type="hidden" id="prod-doc-id" />
-
         <div>
           <label class="block text-xs uppercase tracking-wider text-navy/75 mb-2">Product Image</label>
           <div class="flex items-center gap-4">
-            <div id="prod-image-preview" class="w-20 h-20 rounded-2xl bg-white border border-navy/15 flex items-center justify-center overflow-hidden shrink-0">
-              <span class="text-[10px] text-navy/40 uppercase tracking-wider text-center px-1">No Image</span>
-            </div>
+            <div id="prod-image-preview" class="w-20 h-20 rounded-2xl bg-white border border-navy/15 flex items-center justify-center overflow-hidden shrink-0"><span class="text-[10px] text-navy/40 uppercase tracking-wider text-center px-1">No Image</span></div>
             <div class="flex-grow">
               <input type="file" id="prod-image-file" accept="image/*" onchange="handleImageUpload(event)" class="block w-full text-xs text-navy file:mr-3 file:py-2.5 file:px-4 file:rounded-full file:border-0 file:text-xs file:uppercase file:tracking-wider file:bg-navy file:text-cream hover:file:bg-navy-light cursor-pointer" />
-              <p class="text-[11px] text-navy/55 mt-1.5">Automatically compressed for fast mobile & cloud sync.</p>
+              <p class="text-[11px] text-navy/55 mt-1.5">Automatically compressed &amp; synced to live storefront.</p>
               <input type="hidden" id="prod-image-data" />
             </div>
           </div>
         </div>
-
-        <div>
-          <label class="block text-xs uppercase tracking-wider text-navy/75 mb-1.5">Product Name *</label>
-          <input type="text" id="prod-name" required placeholder="e.g., Aurelia Gold Cuff" class="w-full px-4 py-3 rounded-xl bg-white border border-navy/15 text-navy focus:outline-none focus:border-navy" />
-        </div>
-
+        <div><label class="block text-xs uppercase tracking-wider text-navy/75 mb-1.5">Product Name *</label><input type="text" id="prod-name" required placeholder="e.g., Aurelia Gold Cuff" class="w-full px-4 py-3 rounded-xl bg-white border border-navy/15 text-navy focus:outline-none focus:border-navy" /></div>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label class="block text-xs uppercase tracking-wider text-navy/75 mb-1.5">Unique Product ID *</label>
             <div class="flex gap-2">
               <input type="text" id="prod-sku" required placeholder="KIV-1001" class="w-full px-3.5 py-3 rounded-xl bg-white border border-navy/15 text-navy uppercase focus:outline-none focus:border-navy" />
-              <button type="button" onclick="generateSKU()" class="px-3 py-2 rounded-xl bg-sage text-navy text-xs font-medium whitespace-nowrap hover:bg-sage-dark transition">
-                Auto
-              </button>
+              <button type="button" onclick="generateSKU()" class="px-3 py-2 rounded-xl bg-sage text-navy text-xs font-medium whitespace-nowrap hover:bg-sage-dark transition">Auto</button>
             </div>
           </div>
           <div>
             <label class="block text-xs uppercase tracking-wider text-navy/75 mb-1.5">Category *</label>
             <select id="prod-category" required class="w-full px-3.5 py-3 rounded-xl bg-white border border-navy/15 text-navy focus:outline-none focus:border-navy">
               <option value="Jewelry">Jewelry</option>
-              <option value="Bags & Clutches">Bags & Clutches</option>
+              <option value="Bags & Clutches">Bags &amp; Clutches</option>
               <option value="Watches">Watches</option>
               <option value="Eyewear">Eyewear</option>
               <option value="Hair Accessories">Hair Accessories</option>
-              <option value="Belts & Scarves">Belts & Scarves</option>
+              <option value="Belts & Scarves">Belts &amp; Scarves</option>
               <option value="Other">Other</option>
             </select>
           </div>
         </div>
-
-        <div>
-          <label class="block text-xs uppercase tracking-wider text-navy/75 mb-1.5">Description</label>
-          <textarea id="prod-desc" rows="2" placeholder="Material, finish, dimensions, or notes..." class="w-full px-4 py-3 rounded-xl bg-white border border-navy/15 text-navy focus:outline-none focus:border-navy"></textarea>
-        </div>
-
+        <div><label class="block text-xs uppercase tracking-wider text-navy/75 mb-1.5">Description</label><textarea id="prod-desc" rows="2" placeholder="Material, finish, dimensions, or notes..." class="w-full px-4 py-3 rounded-xl bg-white border border-navy/15 text-navy focus:outline-none focus:border-navy"></textarea></div>
         <div class="grid grid-cols-3 gap-3">
-          <div>
-            <label class="block text-[11px] uppercase tracking-wider text-navy/75 mb-1.5">Buying Price *</label>
-            <input type="number" id="prod-buy-price" step="0.01" min="0" required oninput="recalculateModalPreview()" placeholder="0.00" class="w-full px-3.5 py-3 rounded-xl bg-white border border-navy/15 text-navy focus:outline-none focus:border-navy" />
-          </div>
-          <div>
-            <label class="block text-[11px] uppercase tracking-wider text-navy/75 mb-1.5">Selling Price *</label>
-            <input type="number" id="prod-sell-price" step="0.01" min="0" required oninput="recalculateModalPreview()" placeholder="0.00" class="w-full px-3.5 py-3 rounded-xl bg-white border border-navy/15 text-navy focus:outline-none focus:border-navy" />
-          </div>
-          <div>
-            <label class="block text-[11px] uppercase tracking-wider text-navy/75 mb-1.5">Stock Qty *</label>
-            <input type="number" id="prod-stock" step="1" min="0" required oninput="recalculateModalPreview()" placeholder="0" class="w-full px-3.5 py-3 rounded-xl bg-white border border-navy/15 text-navy focus:outline-none focus:border-navy" />
-          </div>
+          <div><label class="block text-[11px] uppercase tracking-wider text-navy/75 mb-1.5">Buying Price *</label><input type="number" id="prod-buy-price" step="0.01" min="0" required oninput="recalculateModalPreview()" placeholder="0.00" class="w-full px-3.5 py-3 rounded-xl bg-white border border-navy/15 text-navy focus:outline-none focus:border-navy" /></div>
+          <div><label class="block text-[11px] uppercase tracking-wider text-navy/75 mb-1.5">Selling Price *</label><input type="number" id="prod-sell-price" step="0.01" min="0" required oninput="recalculateModalPreview()" placeholder="0.00" class="w-full px-3.5 py-3 rounded-xl bg-white border border-navy/15 text-navy focus:outline-none focus:border-navy" /></div>
+          <div><label class="block text-[11px] uppercase tracking-wider text-navy/75 mb-1.5">Stock Qty *</label><input type="number" id="prod-stock" step="1" min="0" required oninput="recalculateModalPreview()" placeholder="0" class="w-full px-3.5 py-3 rounded-xl bg-white border border-navy/15 text-navy focus:outline-none focus:border-navy" /></div>
         </div>
-
         <div class="bg-navy text-cream p-4 rounded-2xl grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
-          <div>
-            <span class="block text-[10px] uppercase tracking-wider text-cream/65">Profit / Piece</span>
-            <span id="calc-profit-piece" class="font-serif text-xl text-gold">₹0</span>
-          </div>
-          <div>
-            <span class="block text-[10px] uppercase tracking-wider text-cream/65">Profit Margin</span>
-            <span id="calc-margin" class="font-serif text-xl text-sage">0%</span>
-          </div>
-          <div>
-            <span class="block text-[10px] uppercase tracking-wider text-cream/65">Stock Value</span>
-            <span id="calc-stock-val" class="font-serif text-xl text-cream">₹0</span>
-          </div>
-          <div>
-            <span class="block text-[10px] uppercase tracking-wider text-cream/65">Total Profit</span>
-            <span id="calc-total-profit" class="font-serif text-xl text-gold">₹0</span>
-          </div>
+          <div><span class="block text-[10px] uppercase tracking-wider text-cream/65">Profit / Piece</span><span id="calc-profit-piece" class="font-serif text-xl text-gold">₹0</span></div>
+          <div><span class="block text-[10px] uppercase tracking-wider text-cream/65">Profit Margin</span><span id="calc-margin" class="font-serif text-xl text-sage">0%</span></div>
+          <div><span class="block text-[10px] uppercase tracking-wider text-cream/65">Stock Value</span><span id="calc-stock-val" class="font-serif text-xl text-cream">₹0</span></div>
+          <div><span class="block text-[10px] uppercase tracking-wider text-cream/65">Total Profit</span><span id="calc-total-profit" class="font-serif text-xl text-gold">₹0</span></div>
         </div>
-
         <div class="pt-2 flex gap-3">
-          <button type="button" onclick="closeProductModal()" class="w-1/3 py-3.5 rounded-full border border-navy/25 text-navy text-xs uppercase tracking-wider font-medium">
-            Cancel
-          </button>
-          <button type="submit" id="save-product-btn" class="w-2/3 py-3.5 rounded-full bg-navy text-cream text-xs uppercase tracking-[0.2em] font-medium hover:bg-navy-light transition">
-            Save Product
-          </button>
+          <button type="button" onclick="closeProductModal()" class="w-1/3 py-3.5 rounded-full border border-navy/25 text-navy text-xs uppercase tracking-wider font-medium">Cancel</button>
+          <button type="submit" id="save-product-btn" class="w-2/3 py-3.5 rounded-full bg-navy text-cream text-xs uppercase tracking-[0.2em] font-medium hover:bg-navy-light transition">Save Product</button>
         </div>
       </form>
     </div>
   </div>
 
-  <!-- ===================================================================== -->
-  <!-- FIREBASE CLOUD DATABASE & AUTHENTICATION ENGINE                       -->
-  <!-- ===================================================================== -->
+  <!-- FIREBASE CLOUD DATABASE, STOREFRONT CHECKOUT & DELHIVERY ENGINE -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-    import {
-      getAuth,
-      signInWithEmailAndPassword,
-      createUserWithEmailAndPassword,
-      signOut,
-      onAuthStateChanged
-    } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-    import {
-      getFirestore,
-      collection,
-      doc,
-      addDoc,
-      setDoc,
-      updateDoc,
-      deleteDoc,
-      onSnapshot,
-      serverTimestamp
-    } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+    import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    import { getFirestore, collection, doc, addDoc, setDoc, updateDoc, deleteDoc, getDocs, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
     const kivoraFirebaseConfig = {
       apiKey: "AIzaSyBR_NvFeIS-AZzOfhwpgFdT7ALbSoHTc84",
@@ -1016,26 +737,15 @@
       measurementId: "G-01LGPHS188"
     };
 
-    const firebaseConfig = (typeof __firebase_config !== 'undefined' && __firebase_config)
-      ? JSON.parse(__firebase_config)
-      : kivoraFirebaseConfig;
-
+    const firebaseConfig = (typeof __firebase_config !== 'undefined' && __firebase_config) ? JSON.parse(__firebase_config) : kivoraFirebaseConfig;
     const appId = (typeof __app_id !== 'undefined' && __app_id) ? __app_id : 'kivora-store';
+    const ALLOWED_ADMIN_EMAIL = 'nyn3895@gmail.com';
 
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
     const db = getFirestore(app);
 
-    let currentUser = null;
-    let authMode = 'signin';
-    let currency = '₹';
-    let products = [];
-    let orders = [];
-    let stockLogs = [];
-    let waitlistEntries = [];
-    let contactMessages = [];
-    let unsubscribers = [];
-
+    let currentUser = null, currency = '₹', products = [], publicStoreProducts = [], selectedStoreCat = 'ALL', activeCheckoutProd = null, orders = [], stockLogs = [], waitlistEntries = [], contactMessages = [], unsubscribers = [];
     document.getElementById('current-year').textContent = new Date().getFullYear();
 
     window.showToast = (message, type = 'info') => {
@@ -1045,57 +755,132 @@
       el.className = `${bg} px-5 py-3.5 rounded-2xl shadow-xl text-xs tracking-wide transition-all duration-300 transform translate-y-2 opacity-0 pointer-events-auto`;
       el.textContent = message;
       container.appendChild(el);
-      requestAnimationFrame(() => {
-        el.classList.remove('translate-y-2', 'opacity-0');
-      });
-      setTimeout(() => {
-        el.classList.add('opacity-0', 'translate-y-2');
-        setTimeout(() => el.remove(), 300);
-      }, 3400);
+      requestAnimationFrame(() => el.classList.remove('translate-y-2', 'opacity-0'));
+      setTimeout(() => { el.classList.add('opacity-0', 'translate-y-2'); setTimeout(() => el.remove(), 300); }, 3400);
     };
 
     window.navigate = (page) => {
       document.querySelectorAll('.page-section').forEach(sec => sec.classList.add('hidden'));
       const target = document.getElementById(`page-${page}`);
       if (target) target.classList.remove('hidden');
-
       document.querySelectorAll('.nav-link').forEach(btn => {
-        if (btn.dataset.nav === page) {
-          btn.classList.add('text-navy', 'font-semibold');
-        } else {
-          btn.classList.remove('text-navy', 'font-semibold');
-        }
+        if (btn.dataset.nav === page) btn.classList.add('text-navy', 'font-semibold');
+        else btn.classList.remove('text-navy', 'font-semibold');
       });
       window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
     window.toggleMobileMenu = () => {
-      const menu = document.getElementById('mobile-menu');
-      const openIcon = document.getElementById('menu-icon-open');
-      const closeIcon = document.getElementById('menu-icon-close');
-      menu.classList.toggle('hidden');
-      openIcon.classList.toggle('hidden');
-      closeIcon.classList.toggle('hidden');
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+      document.getElementById('menu-icon-open').classList.toggle('hidden');
+      document.getElementById('menu-icon-close').classList.toggle('hidden');
     };
 
-    window.setAuthMode = (mode) => {
-      authMode = mode;
-      const signInBtn = document.getElementById('tab-signin');
-      const signUpBtn = document.getElementById('tab-signup');
-      const helper = document.getElementById('auth-helper-text');
-      const submitBtn = document.getElementById('auth-submit-btn');
+    onSnapshot(collection(db, 'artifacts', appId, 'public', 'data', 'storefront_products'), (snap) => {
+      publicStoreProducts = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+      renderPublicStorefront();
+    });
 
-      if (mode === 'signin') {
-        signInBtn.className = 'py-2.5 rounded-lg text-xs uppercase tracking-wider font-medium bg-navy text-cream transition';
-        signUpBtn.className = 'py-2.5 rounded-lg text-xs uppercase tracking-wider font-medium text-navy/70 transition';
-        helper.classList.add('hidden');
-        submitBtn.textContent = 'Access Dashboard';
-      } else {
-        signUpBtn.className = 'py-2.5 rounded-lg text-xs uppercase tracking-wider font-medium bg-navy text-cream transition';
-        signInBtn.className = 'py-2.5 rounded-lg text-xs uppercase tracking-wider font-medium text-navy/70 transition';
-        helper.classList.remove('hidden');
-        submitBtn.textContent = 'Create Admin Account';
-      }
+    window.filterStoreCategory = (cat) => {
+      selectedStoreCat = cat;
+      document.querySelectorAll('.store-cat-pill').forEach(btn => {
+        btn.className = btn.dataset.storecat === cat
+          ? 'store-cat-pill px-5 py-2 rounded-full bg-navy text-cream text-xs uppercase tracking-[0.18em] transition'
+          : 'store-cat-pill px-5 py-2 rounded-full border border-navy/20 text-navy text-xs uppercase tracking-[0.18em] hover:border-navy transition';
+      });
+      renderPublicStorefront();
+    };
+
+    function renderPublicStorefront() {
+      const grid = document.getElementById('public-storefront-grid');
+      const emptyBox = document.getElementById('public-storefront-empty');
+      if (!grid || !emptyBox) return;
+      const filtered = selectedStoreCat === 'ALL' ? publicStoreProducts : publicStoreProducts.filter(p => p.category === selectedStoreCat);
+      if (filtered.length === 0) { grid.innerHTML = ''; emptyBox.classList.remove('hidden'); return; }
+      emptyBox.classList.add('hidden');
+      grid.innerHTML = filtered.map(p => {
+        const inStock = (Number(p.stock) || 0) > 0;
+        return `
+          <div class="bg-white/85 rounded-3xl border border-navy/10 overflow-hidden shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="relative h-64 bg-cream-dark/45 flex items-center justify-center overflow-hidden">
+                ${p.imageData ? `<img src="${p.imageData}" alt="${escapeHtml(p.name)}" class="w-full h-full object-cover" />` : `<span class="font-serif text-3xl text-navy/30 tracking-[0.22em] uppercase">KIVORA</span>`}
+                <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-cream/95 text-navy text-[10px] uppercase tracking-widest">${escapeHtml(p.category || 'Accessory')}</span>
+              </div>
+              <div class="p-6">
+                <h3 class="font-serif text-2xl text-navy">${escapeHtml(p.name)}</h3>
+                <p class="text-xs text-navy/65 mt-1.5 line-clamp-2">${escapeHtml(p.description || 'Crafted with quiet sophistication and enduring materials.')}</p>
+                <div class="mt-4 flex items-baseline justify-between">
+                  <span class="font-serif text-2xl font-semibold text-navy">₹${Number(p.sellingPrice || 0).toLocaleString('en-IN')}</span>
+                  <span class="text-[11px] text-gold-dark font-medium">Free Delhivery Shipping</span>
+                </div>
+              </div>
+            </div>
+            <div class="px-6 pb-6">
+              <button onclick="openCustomerCheckout('${p.id}')" ${!inStock ? 'disabled' : ''} class="w-full py-3.5 rounded-full text-xs uppercase tracking-[0.2em] font-medium transition ${inStock ? 'bg-navy text-cream hover:bg-navy-light' : 'bg-navy/15 text-navy/45 cursor-not-allowed'}">${inStock ? 'Order Now' : 'Sold Out'}</button>
+            </div>
+          </div>`;
+      }).join('');
+    }
+
+    window.openCustomerCheckout = (productId) => {
+      const prod = publicStoreProducts.find(p => p.id === productId);
+      if (!prod) return;
+      activeCheckoutProd = prod;
+      document.getElementById('co-form-container').classList.remove('hidden');
+      document.getElementById('co-success-container').classList.add('hidden');
+      document.getElementById('co-modal-prod-name').textContent = prod.name;
+      document.getElementById('co-modal-prod-price').textContent = `Price: ₹${prod.sellingPrice} • Free Delhivery Shipping`;
+      document.getElementById('co-cust-qty').value = 1;
+      updateCustomerCheckoutTotal();
+      document.getElementById('customer-checkout-modal').classList.remove('hidden');
+    };
+
+    window.closeCustomerCheckout = () => document.getElementById('customer-checkout-modal').classList.add('hidden');
+
+    window.updateCustomerCheckoutTotal = () => {
+      if (!activeCheckoutProd) return;
+      const qty = Math.max(1, parseInt(document.getElementById('co-cust-qty').value, 10) || 1);
+      document.getElementById('co-modal-total').textContent = `₹${((Number(activeCheckoutProd.sellingPrice) || 0) * qty).toLocaleString('en-IN')}`;
+    };
+
+    window.handleCustomerCheckoutSubmit = async (e) => {
+      e.preventDefault();
+      if (!activeCheckoutProd) return;
+      const btn = document.getElementById('co-submit-btn');
+      btn.disabled = true; btn.textContent = 'Generating Delhivery AWB...';
+      try {
+        const qty = Math.max(1, parseInt(document.getElementById('co-cust-qty').value, 10) || 1);
+        const res = await fetch('/.netlify/functions/place-order', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            customerName: document.getElementById('co-cust-name').value.trim(),
+            customerPhone: document.getElementById('co-cust-phone').value.trim(),
+            streetAddress: document.getElementById('co-cust-address').value.trim(),
+            pinCode: document.getElementById('co-cust-pin').value.trim(),
+            city: document.getElementById('co-cust-city').value.trim(),
+            state: document.getElementById('co-cust-state').value.trim(),
+            productId: activeCheckoutProd.id,
+            productName: activeCheckoutProd.name,
+            quantity: qty,
+            unitBuyingPrice: Number(activeCheckoutProd.buyingPrice || 0),
+            unitSellingPrice: Number(activeCheckoutProd.sellingPrice || 0),
+            deliveryCharge: 0,
+            paymentMode: document.getElementById('co-cust-paymode').value
+          })
+        });
+        const data = await res.json();
+        if (!res.ok || !data.success) throw new Error(data.error || 'Delhivery shipment could not be created.');
+        await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'storefront_orders'), { ...data.order, syncedToAdmin: false });
+        document.getElementById('co-succ-orderid').textContent = data.order.orderNumber;
+        document.getElementById('co-succ-awb').textContent = data.order.awbNumber || 'Assigned Shortly';
+        document.getElementById('co-succ-total').textContent = `₹${(data.order.sellingAmount + data.order.deliveryCollected).toLocaleString('en-IN')}`;
+        document.getElementById('co-form-container').classList.add('hidden');
+        document.getElementById('co-success-container').classList.remove('hidden');
+        showToast('Order placed & Delhivery AWB generated!', 'success');
+      } catch (err) { showToast(err.message, 'error'); }
+      finally { btn.disabled = false; btn.textContent = 'Place Order & Generate Delhivery AWB'; }
     };
 
     window.handleAdminAuth = async (e) => {
@@ -1103,55 +888,37 @@
       const email = document.getElementById('admin-email').value.trim();
       const password = document.getElementById('admin-password').value;
       const btn = document.getElementById('auth-submit-btn');
-      btn.disabled = true;
-      btn.textContent = 'Authenticating...';
-
+      if (email.toLowerCase() !== ALLOWED_ADMIN_EMAIL) { showToast('Access denied. Sole owner credentials required.', 'error'); return; }
+      btn.disabled = true; btn.textContent = 'Authenticating...';
       try {
-        if (authMode === 'signup') {
-          await createUserWithEmailAndPassword(auth, email, password);
-          showToast('KIVORA Admin account created and signed in.', 'success');
-        } else {
-          await signInWithEmailAndPassword(auth, email, password);
-          showToast('Welcome back to KIVORA Admin.', 'success');
-        }
+        await signInWithEmailAndPassword(auth, email, password);
+        showToast('Welcome back to KIVORA Admin.', 'success');
       } catch (err) {
-        let msg = err.message;
-        if (err.code === 'auth/invalid-credential' || err.code === 'auth/wrong-password') {
-          msg = 'Invalid email or password.';
-        } else if (err.code === 'auth/email-already-in-use') {
-          msg = 'Admin account already exists. Please use Sign In.';
-        }
-        showToast(msg, 'error');
-      } finally {
-        btn.disabled = false;
-        btn.textContent = authMode === 'signin' ? 'Access Dashboard' : 'Create Admin Account';
-      }
+        showToast((err.code === 'auth/invalid-credential' || err.code === 'auth/wrong-password') ? 'Invalid email or password.' : err.message, 'error');
+      } finally { btn.disabled = false; btn.textContent = 'Access Dashboard'; }
     };
 
-    window.handleAdminLogout = async () => {
-      await signOut(auth);
-      showToast('Signed out securely.');
-    };
+    window.handleAdminLogout = async () => { await signOut(auth); showToast('Signed out securely.'); };
 
     window.viewPublicSite = () => {
       document.getElementById('admin-dashboard-shell').classList.add('hidden');
       document.getElementById('public-header').classList.remove('hidden');
       document.getElementById('public-pages').classList.remove('hidden');
       document.getElementById('public-footer').classList.remove('hidden');
-      navigate('home');
+      navigate('collections');
     };
 
-    onAuthStateChanged(auth, (user) => {
+    onAuthStateChanged(auth, async (user) => {
+      if (user && (!user.email || user.email.toLowerCase() !== ALLOWED_ADMIN_EMAIL)) { await signOut(auth); showToast('Unauthorized account signed out.', 'error'); return; }
       currentUser = user;
-      unsubscribers.forEach(unsub => unsub());
-      unsubscribers = [];
-
+      unsubscribers.forEach(unsub => unsub()); unsubscribers = [];
       if (user) {
         document.getElementById('public-header').classList.add('hidden');
         document.getElementById('public-pages').classList.add('hidden');
         document.getElementById('public-footer').classList.add('hidden');
         document.getElementById('admin-dashboard-shell').classList.remove('hidden');
         startRealtimeSync(user.uid);
+        syncWebsiteOrdersToAdmin();
       } else {
         document.getElementById('admin-dashboard-shell').classList.add('hidden');
         document.getElementById('public-header').classList.remove('hidden');
@@ -1161,45 +928,46 @@
     });
 
     function startRealtimeSync(uid) {
-      const productsRef = collection(db, 'artifacts', appId, 'users', uid, 'products');
-      unsubscribers.push(onSnapshot(productsRef, (snap) => {
-        products = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-        products.sort((a, b) => (b.updatedAtMs || 0) - (a.updatedAtMs || 0));
+      unsubscribers.push(onSnapshot(collection(db, 'artifacts', appId, 'users', uid, 'products'), (snap) => {
+        products = snap.docs.map(d => ({ id: d.id, ...d.data() })).sort((a, b) => (b.updatedAtMs || 0) - (a.updatedAtMs || 0));
         renderAllAdminViews();
-      }, (err) => {
-        console.error('Products sync error:', err);
-        showToast('Database permission check needed. Ensure Firestore Rules are published.', 'error');
+      }, () => showToast('Database permission check needed. Ensure Firestore Rules are published.', 'error')));
+
+      unsubscribers.push(onSnapshot(collection(db, 'artifacts', appId, 'users', uid, 'orders'), (snap) => {
+        orders = snap.docs.map(d => ({ id: d.id, ...d.data() })).sort((a, b) => (b.createdAtMs || 0) - (a.createdAtMs || 0));
+        renderOrders(); renderDashboardOverview();
       }));
 
-      const ordersRef = collection(db, 'artifacts', appId, 'users', uid, 'orders');
-      unsubscribers.push(onSnapshot(ordersRef, (snap) => {
-        orders = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-        orders.sort((a, b) => (b.createdAtMs || 0) - (a.createdAtMs || 0));
-        renderOrders();
-        renderDashboardOverview();
-      }, (err) => {
-        console.error('Orders sync error:', err);
-      }));
-
-      const logsRef = collection(db, 'artifacts', appId, 'users', uid, 'stockLogs');
-      unsubscribers.push(onSnapshot(logsRef, (snap) => {
-        stockLogs = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-        stockLogs.sort((a, b) => (b.timestampMs || 0) - (a.timestampMs || 0));
+      unsubscribers.push(onSnapshot(collection(db, 'artifacts', appId, 'users', uid, 'stockLogs'), (snap) => {
+        stockLogs = snap.docs.map(d => ({ id: d.id, ...d.data() })).sort((a, b) => (b.timestampMs || 0) - (a.timestampMs || 0));
         renderStockHistory();
       }));
 
-      const waitlistRef = collection(db, 'artifacts', appId, 'public', 'data', 'waitlist');
-      unsubscribers.push(onSnapshot(waitlistRef, (snap) => {
-        waitlistEntries = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-        renderInbox();
+      unsubscribers.push(onSnapshot(collection(db, 'artifacts', appId, 'public', 'data', 'waitlist'), (snap) => {
+        waitlistEntries = snap.docs.map(d => ({ id: d.id, ...d.data() })); renderInbox();
       }));
 
-      const messagesRef = collection(db, 'artifacts', appId, 'public', 'data', 'messages');
-      unsubscribers.push(onSnapshot(messagesRef, (snap) => {
-        contactMessages = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-        renderInbox();
+      unsubscribers.push(onSnapshot(collection(db, 'artifacts', appId, 'public', 'data', 'messages'), (snap) => {
+        contactMessages = snap.docs.map(d => ({ id: d.id, ...d.data() })); renderInbox();
       }));
     }
+
+    window.syncWebsiteOrdersToAdmin = async () => {
+      if (!currentUser) return;
+      try {
+        const snap = await getDocs(collection(db, 'artifacts', appId, 'public', 'data', 'storefront_orders'));
+        let importedCount = 0;
+        for (const docSnap of snap.docs) {
+          const ord = docSnap.data();
+          if (ord.syncedToAdmin) continue;
+          await setDoc(doc(db, 'artifacts', appId, 'users', currentUser.uid, 'orders', docSnap.id), { ...ord, syncedToAdmin: true, updatedAtMs: Date.now() });
+          if (ord.productId) await adjustStock(ord.productId, -(Number(ord.quantity) || 1), `Website Order ${ord.orderNumber}`);
+          await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'storefront_orders', docSnap.id), { syncedToAdmin: true });
+          importedCount++;
+        }
+        if (importedCount > 0) showToast(`${importedCount} new website order(s) synced with Delhivery AWB!`, 'success');
+      } catch (err) { console.error(err); }
+    };
 
     window.handleWaitlistSubmit = async (e) => {
       e.preventDefault();
@@ -1207,138 +975,70 @@
       const email = input.value.trim();
       if (!email) return;
       try {
-        await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'waitlist'), {
-          email,
-          createdAt: new Date().toISOString()
-        });
-        input.value = '';
-        showToast('Thank you. You are on the KIVORA private launch list.', 'success');
-      } catch (err) {
-        showToast('Unable to submit right now. Please try again.', 'error');
-      }
+        await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'waitlist'), { email, createdAt: new Date().toISOString() });
+        input.value = ''; showToast('Thank you. You are on the KIVORA private launch list.', 'success');
+      } catch { showToast('Unable to submit right now. Please try again.', 'error'); }
     };
 
     window.handleContactSubmit = async (e) => {
       e.preventDefault();
-      const name = document.getElementById('contact-name').value.trim();
-      const email = document.getElementById('contact-email').value.trim();
-      const message = document.getElementById('contact-message').value.trim();
       try {
         await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'messages'), {
-          name,
-          email,
-          message,
+          name: document.getElementById('contact-name').value.trim(),
+          email: document.getElementById('contact-email').value.trim(),
+          message: document.getElementById('contact-message').value.trim(),
           createdAt: new Date().toISOString()
         });
-        e.target.reset();
-        showToast('Your message has been received by KIVORA.', 'success');
-      } catch (err) {
-        showToast('Unable to send message right now.', 'error');
-      }
+        e.target.reset(); showToast('Your message has been received by KIVORA.', 'success');
+      } catch { showToast('Unable to send message right now.', 'error'); }
     };
 
     window.switchAdminTab = (tab) => {
       document.querySelectorAll('.admin-tab-panel').forEach(p => p.classList.add('hidden'));
       document.getElementById(`admintab-${tab}`).classList.remove('hidden');
       document.querySelectorAll('.admin-tab-btn').forEach(btn => {
-        if (btn.dataset.admintab === tab) {
-          btn.className = 'admin-tab-btn px-4 py-2.5 rounded-xl text-xs uppercase tracking-[0.15em] font-medium bg-navy text-cream whitespace-nowrap';
-        } else {
-          btn.className = 'admin-tab-btn px-4 py-2.5 rounded-xl text-xs uppercase tracking-[0.15em] font-medium text-navy/70 hover:bg-cream whitespace-nowrap';
-        }
+        btn.className = btn.dataset.admintab === tab
+          ? 'admin-tab-btn px-4 py-2.5 rounded-xl text-xs uppercase tracking-[0.15em] font-medium bg-navy text-cream whitespace-nowrap'
+          : 'admin-tab-btn px-4 py-2.5 rounded-xl text-xs uppercase tracking-[0.15em] font-medium text-navy/70 hover:bg-cream whitespace-nowrap';
       });
     };
 
-    window.updateCurrency = (val) => {
-      currency = val;
-      renderAllAdminViews();
-      recalculateModalPreview();
-      recalculateOrderModalPreview();
-    };
-
-    function formatMoney(num) {
-      const n = Number(num) || 0;
-      return `${currency}${n.toLocaleString('en-IN', { minimumFractionDigits: 0, maximumFractionDigits: 2 })}`;
-    }
+    window.updateCurrency = (val) => { currency = val; renderAllAdminViews(); recalculateModalPreview(); recalculateOrderModalPreview(); };
+    function formatMoney(num) { return `${currency}${(Number(num) || 0).toLocaleString('en-IN', { minimumFractionDigits: 0, maximumFractionDigits: 2 })}`; }
 
     function calculateMetrics(product) {
-      const buy = Number(product.buyingPrice) || 0;
-      const sell = Number(product.sellingPrice) || 0;
-      const stock = Number(product.stock) || 0;
+      const buy = Number(product.buyingPrice) || 0, sell = Number(product.sellingPrice) || 0, stock = Number(product.stock) || 0;
       const profitPerPiece = sell - buy;
-      const profitMargin = sell > 0 ? ((profitPerPiece / sell) * 100) : 0;
-      const stockValue = buy * stock;
-      const potentialProfit = profitPerPiece * stock;
-      return { profitPerPiece, profitMargin, stockValue, potentialProfit };
+      return { profitPerPiece, profitMargin: sell > 0 ? ((profitPerPiece / sell) * 100) : 0, stockValue: buy * stock, potentialProfit: profitPerPiece * stock };
     }
 
     function calculateOrderMetrics(ord) {
-      const sellAmt = Number(ord.sellingAmount) || 0;
-      const buyAmt = Number(ord.buyingAmount) || 0;
-      const delCollected = Number(ord.deliveryCollected) || 0;
-      const delActual = Number(ord.actualCourierCharge) || 0;
-      const pkgCost = Number(ord.packagingCost) || 0;
-
-      const totalCustomerPayment = sellAmt + delCollected;
-      const totalBusinessCost = buyAmt + delActual + pkgCost;
-      const deliveryDiff = delCollected - delActual;
-      const netProfit = sellAmt + delCollected - buyAmt - delActual - pkgCost;
-
-      return {
-        totalCustomerPayment,
-        totalBusinessCost,
-        deliveryDiff,
-        netProfit
-      };
+      const sellAmt = Number(ord.sellingAmount) || 0, buyAmt = Number(ord.buyingAmount) || 0, delCollected = Number(ord.deliveryCollected) || 0, delActual = Number(ord.actualCourierCharge) || 0, pkgCost = Number(ord.packagingCost) || 0;
+      return { totalCustomerPayment: sellAmt + delCollected, totalBusinessCost: buyAmt + delActual + pkgCost, deliveryDiff: delCollected - delActual, netProfit: sellAmt + delCollected - buyAmt - delActual - pkgCost };
     }
 
-    function renderAllAdminViews() {
-      renderDashboardOverview();
-      renderOrders();
-      renderProducts();
-      renderInventory();
-    }
+    function renderAllAdminViews() { renderDashboardOverview(); renderOrders(); renderProducts(); renderInventory(); }
 
     function renderDashboardOverview() {
-      let totalProducts = products.length;
-      let totalStock = 0;
-      let lowStockItems = [];
-      let totalInventoryValue = 0;
-      let totalPotentialProfit = 0;
-
+      let totalStock = 0, lowStockItems = [], totalInventoryValue = 0, totalPotentialProfit = 0;
       products.forEach(p => {
-        const stock = Number(p.stock) || 0;
-        const m = calculateMetrics(p);
-        totalStock += stock;
-        totalInventoryValue += m.stockValue;
-        totalPotentialProfit += m.potentialProfit;
+        const stock = Number(p.stock) || 0, m = calculateMetrics(p);
+        totalStock += stock; totalInventoryValue += m.stockValue; totalPotentialProfit += m.potentialProfit;
         if (stock <= 5) lowStockItems.push(p);
       });
-
-      document.getElementById('kpi-total-products').textContent = totalProducts;
+      document.getElementById('kpi-total-products').textContent = products.length;
       document.getElementById('kpi-total-stock').textContent = totalStock;
       document.getElementById('kpi-low-stock').textContent = lowStockItems.length;
       document.getElementById('kpi-inventory-value').textContent = formatMoney(totalInventoryValue);
       document.getElementById('kpi-potential-profit').textContent = formatMoney(totalPotentialProfit);
 
-      let pendingOrders = 0;
-      let shippedOrders = 0;
-      let deliveredOrders = 0;
-      let totalDeliveryExpense = 0;
-      let totalOrdersNetProfit = 0;
-
+      let pendingOrders = 0, shippedOrders = 0, deliveredOrders = 0, totalDeliveryExpense = 0, totalOrdersNetProfit = 0;
       orders.forEach(o => {
         if (o.orderStatus === 'Pending' || o.orderStatus === 'Processing') pendingOrders++;
         if (o.orderStatus === 'Shipped' || o.orderStatus === 'Out for Delivery') shippedOrders++;
         if (o.orderStatus === 'Delivered') deliveredOrders++;
-
-        if (o.orderStatus !== 'Cancelled') {
-          const om = calculateOrderMetrics(o);
-          totalDeliveryExpense += (Number(o.actualCourierCharge) || 0);
-          totalOrdersNetProfit += om.netProfit;
-        }
+        if (o.orderStatus !== 'Cancelled') { totalDeliveryExpense += (Number(o.actualCourierCharge) || 0); totalOrdersNetProfit += calculateOrderMetrics(o).netProfit; }
       });
-
       document.getElementById('dash-orders-total').textContent = orders.length;
       document.getElementById('dash-orders-pending').textContent = pendingOrders;
       document.getElementById('dash-orders-shipped').textContent = shippedOrders;
@@ -1347,22 +1047,13 @@
       document.getElementById('dash-orders-net-profit').textContent = formatMoney(totalOrdersNetProfit);
 
       const lowStockContainer = document.getElementById('dashboard-low-stock-list');
-      if (lowStockItems.length === 0) {
-        lowStockContainer.innerHTML = `<p class="text-xs text-navy/50 py-4 text-center">All products have healthy stock levels (&gt; 5 units).</p>`;
-      } else {
-        lowStockContainer.innerHTML = lowStockItems.map(item => `
+      lowStockContainer.innerHTML = lowStockItems.length === 0
+        ? `<p class="text-xs text-navy/50 py-4 text-center">All products have healthy stock levels (&gt; 5 units).</p>`
+        : lowStockItems.map(item => `
           <div class="flex items-center justify-between p-3 rounded-xl bg-amber-50 border border-amber-200">
-            <div>
-              <div class="font-medium text-navy text-sm">${escapeHtml(item.name)}</div>
-              <div class="text-[11px] text-navy/60">ID: ${escapeHtml(item.sku)} • ${escapeHtml(item.category)}</div>
-            </div>
-            <div class="flex items-center gap-2">
-              <span class="px-2.5 py-1 rounded-full bg-amber-200 text-amber-900 text-xs font-semibold">${item.stock} left</span>
-              <button onclick="adjustStock('${item.id}', 5, 'Restocked')" class="px-2.5 py-1.5 rounded-lg bg-navy text-cream text-xs">+5</button>
-            </div>
-          </div>
-        `).join('');
-      }
+            <div><div class="font-medium text-navy text-sm">${escapeHtml(item.name)}</div><div class="text-[11px] text-navy/60">ID: ${escapeHtml(item.sku)} • ${escapeHtml(item.category)}</div></div>
+            <div class="flex items-center gap-2"><span class="px-2.5 py-1 rounded-full bg-amber-200 text-amber-900 text-xs font-semibold">${item.stock} left</span><button onclick="adjustStock('${item.id}', 5, 'Restocked')" class="px-2.5 py-1.5 rounded-lg bg-navy text-cream text-xs">+5</button></div>
+          </div>`).join('');
     }
 
     window.renderOrders = () => {
@@ -1371,166 +1062,70 @@
       const listEl = document.getElementById('orders-list');
       if (!listEl) return;
 
-      let totalDelCollected = 0;
-      let totalDelExpense = 0;
-      let totalNetProfit = 0;
-      let countPending = 0;
-      let countShipped = 0;
-      let countDelivered = 0;
-
+      let totalDelCollected = 0, totalDelExpense = 0, totalNetProfit = 0, countPending = 0, countShipped = 0, countDelivered = 0;
       orders.forEach(o => {
         if (o.orderStatus === 'Pending' || o.orderStatus === 'Processing') countPending++;
         if (o.orderStatus === 'Shipped' || o.orderStatus === 'Out for Delivery') countShipped++;
         if (o.orderStatus === 'Delivered') countDelivered++;
-
-        if (o.orderStatus !== 'Cancelled') {
-          const m = calculateOrderMetrics(o);
-          totalDelCollected += (Number(o.deliveryCollected) || 0);
-          totalDelExpense += (Number(o.actualCourierCharge) || 0);
-          totalNetProfit += m.netProfit;
-        }
+        if (o.orderStatus !== 'Cancelled') { totalDelCollected += (Number(o.deliveryCollected) || 0); totalDelExpense += (Number(o.actualCourierCharge) || 0); totalNetProfit += calculateOrderMetrics(o).netProfit; }
       });
 
       const delDiffTotal = totalDelCollected - totalDelExpense;
-
       document.getElementById('ord-kpi-collected').textContent = formatMoney(totalDelCollected);
       document.getElementById('ord-kpi-expense').textContent = formatMoney(totalDelExpense);
       const diffEl = document.getElementById('ord-kpi-diff');
       diffEl.textContent = `${delDiffTotal >= 0 ? '+' : ''}${formatMoney(delDiffTotal)}`;
       diffEl.className = `font-serif text-2xl sm:text-3xl mt-1 ${delDiffTotal >= 0 ? 'text-emerald-700' : 'text-red-600'}`;
       document.getElementById('ord-kpi-profit').textContent = formatMoney(totalNetProfit);
-
       document.getElementById('ord-count-total').textContent = orders.length;
       document.getElementById('ord-count-pending').textContent = countPending;
       document.getElementById('ord-count-shipped').textContent = countShipped;
       document.getElementById('ord-count-delivered').textContent = countDelivered;
 
-      const filtered = orders.filter(o => {
-        const matchesStatus = statusFilter === 'ALL' || o.orderStatus === statusFilter;
-        const matchesQuery = !query ||
-          (o.orderNumber && o.orderNumber.toLowerCase().includes(query)) ||
-          (o.customerName && o.customerName.toLowerCase().includes(query)) ||
-          (o.customerPhone && o.customerPhone.toLowerCase().includes(query)) ||
-          (o.productName && o.productName.toLowerCase().includes(query)) ||
-          (o.awbNumber && o.awbNumber.toLowerCase().includes(query));
-        return matchesStatus && matchesQuery;
-      });
+      const filtered = orders.filter(o => (statusFilter === 'ALL' || o.orderStatus === statusFilter) && (!query || (o.orderNumber && o.orderNumber.toLowerCase().includes(query)) || (o.customerName && o.customerName.toLowerCase().includes(query)) || (o.customerPhone && o.customerPhone.toLowerCase().includes(query)) || (o.productName && o.productName.toLowerCase().includes(query)) || (o.awbNumber && o.awbNumber.toLowerCase().includes(query))));
 
       if (filtered.length === 0) {
-        listEl.innerHTML = `
-          <div class="col-span-full bg-white rounded-3xl border border-navy/10 p-12 text-center">
-            <p class="font-serif text-2xl text-navy mb-2">No Orders Recorded Yet</p>
-            <p class="text-xs text-navy/60 mb-5">Tap "+ Create New Order" to log customer orders, courier expenses, and tracking details.</p>
-            <button onclick="openOrderModal()" class="px-6 py-3 rounded-full bg-navy text-cream text-xs uppercase tracking-widest">+ Create New Order</button>
-          </div>
-        `;
+        listEl.innerHTML = `<div class="col-span-full bg-white rounded-3xl border border-navy/10 p-12 text-center"><p class="font-serif text-2xl text-navy mb-2">No Orders Recorded Yet</p><p class="text-xs text-navy/60 mb-5">Customer orders from your Collections page appear here automatically with Delhivery AWBs.</p><button onclick="openOrderModal()" class="px-6 py-3 rounded-full bg-navy text-cream text-xs uppercase tracking-widest">+ Create New Order</button></div>`;
         return;
       }
 
       listEl.innerHTML = filtered.map(o => {
         const m = calculateOrderMetrics(o);
-        const statusBadge = getOrderStatusBadge(o.orderStatus);
-        const payBadge = getPaymentBadge(o.paymentStatus);
-
+        const statusBadge = o.orderStatus === 'Delivered' ? 'bg-emerald-100 text-emerald-800' : (o.orderStatus === 'Shipped' || o.orderStatus === 'Out for Delivery') ? 'bg-blue-100 text-blue-800' : o.orderStatus === 'Processing' ? 'bg-purple-100 text-purple-800' : (o.orderStatus === 'Cancelled' || o.orderStatus === 'Returned') ? 'bg-red-100 text-red-800' : 'bg-amber-100 text-amber-800';
+        const payBadge = o.paymentStatus === 'Paid' ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' : o.paymentStatus === 'Refunded' ? 'bg-red-50 text-red-700 border border-red-200' : 'bg-amber-50 text-amber-700 border border-amber-200';
         return `
           <div class="bg-white rounded-2xl border border-navy/10 shadow-sm overflow-hidden flex flex-col justify-between">
             <div class="p-5 space-y-4">
               <div class="flex items-start justify-between gap-2">
-                <div>
-                  <span class="text-xs font-semibold uppercase tracking-wider text-gold-dark">${escapeHtml(o.orderNumber)}</span>
-                  <h3 class="font-serif text-2xl text-navy leading-tight">${escapeHtml(o.customerName)}</h3>
-                  <p class="text-xs text-navy/65">${escapeHtml(o.customerPhone)}</p>
-                </div>
-                <div class="flex flex-col items-end gap-1.5">
-                  <span class="px-2.5 py-1 rounded-full text-[11px] font-medium ${statusBadge}">${escapeHtml(o.orderStatus)}</span>
-                  <span class="px-2.5 py-0.5 rounded-full text-[10px] uppercase tracking-wider font-medium ${payBadge}">Pay: ${escapeHtml(o.paymentStatus)}</span>
-                </div>
+                <div><span class="text-xs font-semibold uppercase tracking-wider text-gold-dark">${escapeHtml(o.orderNumber)}</span><h3 class="font-serif text-2xl text-navy leading-tight">${escapeHtml(o.customerName)}</h3><p class="text-xs text-navy/65">${escapeHtml(o.customerPhone)}</p></div>
+                <div class="flex flex-col items-end gap-1.5"><span class="px-2.5 py-1 rounded-full text-[11px] font-medium ${statusBadge}">${escapeHtml(o.orderStatus)}</span><span class="px-2.5 py-0.5 rounded-full text-[10px] uppercase tracking-wider font-medium ${payBadge}">Pay: ${escapeHtml(o.paymentStatus)}</span></div>
               </div>
-
               <div class="p-3.5 rounded-xl bg-cream/70 border border-navy/5 space-y-1.5 text-xs">
-                <div class="flex justify-between font-medium text-navy">
-                  <span>${escapeHtml(o.productName)} &times; ${o.quantity}</span>
-                  <span>${formatMoney(o.sellingAmount)}</span>
-                </div>
+                <div class="flex justify-between font-medium text-navy"><span>${escapeHtml(o.productName)} &times; ${o.quantity}</span><span>${formatMoney(o.sellingAmount)}</span></div>
                 <p class="text-navy/65 text-[11px] leading-relaxed">${escapeHtml(o.deliveryAddress)}</p>
               </div>
-
               <div class="flex flex-wrap items-center justify-between gap-2 text-xs bg-sage/30 px-3.5 py-2.5 rounded-xl">
-                <div>
-                  <span class="text-navy/60">Courier:</span>
-                  <span class="font-medium text-navy">${escapeHtml(o.courierPartner || 'Delhivery')}</span>
-                </div>
-                <div>
-                  <span class="text-navy/60">AWB:</span>
-                  <span class="font-mono font-medium text-navy">${o.awbNumber ? escapeHtml(o.awbNumber) : 'Not assigned'}</span>
-                </div>
+                <div><span class="text-navy/60">Courier:</span> <span class="font-medium text-navy">${escapeHtml(o.courierPartner || 'Delhivery')}</span></div>
+                <div><span class="text-navy/60">AWB:</span> <span class="font-mono font-medium text-navy">${o.awbNumber ? escapeHtml(o.awbNumber) : 'Not assigned'}</span></div>
               </div>
-
               <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 pt-2 border-t border-navy/10 text-xs">
-                <div>
-                  <span class="text-[10px] uppercase text-navy/50 block">Customer Paid</span>
-                  <span class="font-medium text-navy">${formatMoney(m.totalCustomerPayment)}</span>
-                  <span class="text-[10px] text-navy/50 block">(Incl. ${formatMoney(o.deliveryCollected)} del)</span>
-                </div>
-                <div>
-                  <span class="text-[10px] uppercase text-navy/50 block">Courier + Packing</span>
-                  <span class="font-medium text-navy">${formatMoney(o.actualCourierCharge)} + ${formatMoney(o.packagingCost)}</span>
-                  <span class="text-[10px] ${m.deliveryDiff >= 0 ? 'text-emerald-700' : 'text-red-600'} block">
-                    Del Diff: ${m.deliveryDiff >= 0 ? '+' : ''}${formatMoney(m.deliveryDiff)}
-                  </span>
-                </div>
-                <div class="col-span-2 sm:col-span-1 sm:text-right">
-                  <span class="text-[10px] uppercase text-navy/50 block">Net Order Profit</span>
-                  <span class="font-serif text-xl font-semibold ${m.netProfit >= 0 ? 'text-emerald-700' : 'text-red-600'}">
-                    ${formatMoney(m.netProfit)}
-                  </span>
-                </div>
+                <div><span class="text-[10px] uppercase text-navy/50 block">Customer Paid</span><span class="font-medium text-navy">${formatMoney(m.totalCustomerPayment)}</span><span class="text-[10px] text-navy/50 block">(Incl. ${formatMoney(o.deliveryCollected)} del)</span></div>
+                <div><span class="text-[10px] uppercase text-navy/50 block">Courier + Packing</span><span class="font-medium text-navy">${formatMoney(o.actualCourierCharge)} + ${formatMoney(o.packagingCost)}</span><span class="text-[10px] ${m.deliveryDiff >= 0 ? 'text-emerald-700' : 'text-red-600'} block">Del Diff: ${m.deliveryDiff >= 0 ? '+' : ''}${formatMoney(m.deliveryDiff)}</span></div>
+                <div class="col-span-2 sm:col-span-1 sm:text-right"><span class="text-[10px] uppercase text-navy/50 block">Net Order Profit</span><span class="font-serif text-xl font-semibold ${m.netProfit >= 0 ? 'text-emerald-700' : 'text-red-600'}">${formatMoney(m.netProfit)}</span></div>
               </div>
             </div>
-
             <div class="px-5 py-3 bg-cream/60 border-t border-navy/10 flex items-center justify-between gap-2">
               <select onchange="quickUpdateOrderStatus('${o.id}', this.value)" class="px-3 py-2 rounded-xl bg-white border border-navy/15 text-xs text-navy font-medium">
-                <option value="Pending" ${o.orderStatus === 'Pending' ? 'selected' : ''}>Pending</option>
-                <option value="Processing" ${o.orderStatus === 'Processing' ? 'selected' : ''}>Processing</option>
-                <option value="Shipped" ${o.orderStatus === 'Shipped' ? 'selected' : ''}>Shipped</option>
-                <option value="Out for Delivery" ${o.orderStatus === 'Out for Delivery' ? 'selected' : ''}>Out for Delivery</option>
-                <option value="Delivered" ${o.orderStatus === 'Delivered' ? 'selected' : ''}>Delivered</option>
-                <option value="Cancelled" ${o.orderStatus === 'Cancelled' ? 'selected' : ''}>Cancelled</option>
-                <option value="Returned" ${o.orderStatus === 'Returned' ? 'selected' : ''}>Returned</option>
+                ${['Pending','Processing','Shipped','Out for Delivery','Delivered','Cancelled','Returned'].map(st => `<option value="${st}" ${o.orderStatus === st ? 'selected' : ''}>${st}</option>`).join('')}
               </select>
               <div class="flex items-center gap-2">
-                <button onclick="openEditOrderModal('${o.id}')" class="px-4 py-2 rounded-xl bg-navy text-cream text-xs uppercase tracking-wider font-medium hover:bg-navy-light transition">
-                  Edit
-                </button>
-                <button onclick="deleteOrder('${o.id}')" class="px-3 py-2 rounded-xl border border-red-200 text-red-700 text-xs uppercase tracking-wider hover:bg-red-50 transition">
-                  Delete
-                </button>
+                <button onclick="openEditOrderModal('${o.id}')" class="px-4 py-2 rounded-xl bg-navy text-cream text-xs uppercase tracking-wider font-medium hover:bg-navy-light transition">Edit</button>
+                <button onclick="deleteOrder('${o.id}')" class="px-3 py-2 rounded-xl border border-red-200 text-red-700 text-xs uppercase tracking-wider hover:bg-red-50 transition">Delete</button>
               </div>
             </div>
-          </div>
-        `;
+          </div>`;
       }).join('');
     };
-
-    function getOrderStatusBadge(status) {
-      switch (status) {
-        case 'Delivered': return 'bg-emerald-100 text-emerald-800';
-        case 'Shipped':
-        case 'Out for Delivery': return 'bg-blue-100 text-blue-800';
-        case 'Processing': return 'bg-purple-100 text-purple-800';
-        case 'Cancelled':
-        case 'Returned': return 'bg-red-100 text-red-800';
-        default: return 'bg-amber-100 text-amber-800';
-      }
-    }
-
-    function getPaymentBadge(status) {
-      switch (status) {
-        case 'Paid': return 'bg-emerald-50 text-emerald-700 border border-emerald-200';
-        case 'Refunded': return 'bg-red-50 text-red-700 border border-red-200';
-        default: return 'bg-amber-50 text-amber-700 border border-amber-200';
-      }
-    }
 
     window.openOrderModal = () => {
       document.getElementById('order-modal-title').textContent = 'Create New Order';
@@ -1539,16 +1134,13 @@
       document.getElementById('ord-courier').value = 'Delhivery';
       document.getElementById('ord-stock-deduct-row').classList.remove('hidden');
       document.getElementById('ord-deduct-stock').checked = true;
-      populateOrderProductDropdown();
-      generateOrderId();
-      recalculateOrderModalPreview();
+      populateOrderProductDropdown(); generateOrderId(); recalculateOrderModalPreview();
       document.getElementById('order-modal').classList.remove('hidden');
     };
 
     window.openEditOrderModal = (orderId) => {
       const o = orders.find(item => item.id === orderId);
       if (!o) return;
-
       document.getElementById('order-modal-title').textContent = 'Edit Order & Delivery';
       document.getElementById('ord-doc-id').value = o.id;
       document.getElementById('ord-number').value = o.orderNumber || '';
@@ -1556,53 +1148,35 @@
       document.getElementById('ord-cust-name').value = o.customerName || '';
       document.getElementById('ord-cust-phone').value = o.customerPhone || '';
       document.getElementById('ord-cust-address').value = o.deliveryAddress || '';
-
       populateOrderProductDropdown(o.productId || '');
       document.getElementById('ord-qty').value = o.quantity || 1;
       document.getElementById('ord-prod-name').value = o.productName || '';
       document.getElementById('ord-buy-amount').value = o.buyingAmount ?? 0;
       document.getElementById('ord-sell-amount').value = o.sellingAmount ?? 0;
-
       document.getElementById('ord-del-collected').value = o.deliveryCollected ?? 0;
       document.getElementById('ord-del-actual').value = o.actualCourierCharge ?? 0;
       document.getElementById('ord-packaging').value = o.packagingCost ?? 0;
-
       document.getElementById('ord-courier').value = o.courierPartner || 'Delhivery';
       document.getElementById('ord-awb').value = o.awbNumber || '';
       document.getElementById('ord-status').value = o.orderStatus || 'Pending';
-
       document.getElementById('ord-stock-deduct-row').classList.add('hidden');
-
       recalculateOrderModalPreview();
       document.getElementById('order-modal').classList.remove('hidden');
     };
 
-    window.closeOrderModal = () => {
-      document.getElementById('order-modal').classList.add('hidden');
-    };
-
-    window.generateOrderId = () => {
-      const rand = Math.floor(1000 + Math.random() * 9000);
-      document.getElementById('ord-number').value = `ORD-${rand}`;
-    };
+    window.closeOrderModal = () => document.getElementById('order-modal').classList.add('hidden');
+    window.generateOrderId = () => { document.getElementById('ord-number').value = `ORD-${Math.floor(1000 + Math.random() * 9000)}`; };
 
     function populateOrderProductDropdown(selectedId = '') {
-      const select = document.getElementById('ord-product-select');
-      select.innerHTML = `<option value="">-- Select from Inventory (or type below) --</option>` +
-        products.map(p => `
-          <option value="${p.id}" ${p.id === selectedId ? 'selected' : ''}>
-            ${escapeHtml(p.name)} (${escapeHtml(p.sku)}) — ${formatMoney(p.sellingPrice)} [${p.stock} left]
-          </option>
-        `).join('');
+      document.getElementById('ord-product-select').innerHTML = `<option value="">-- Select from Inventory (or type below) --</option>` +
+        products.map(p => `<option value="${p.id}" ${p.id === selectedId ? 'selected' : ''}>${escapeHtml(p.name)} (${escapeHtml(p.sku)}) — ${formatMoney(p.sellingPrice)} [${p.stock} left]</option>`).join('');
     }
 
     window.handleOrderProductChange = () => {
       const prodId = document.getElementById('ord-product-select').value;
       const qty = Math.max(1, parseInt(document.getElementById('ord-qty').value, 10) || 1);
-      if (!prodId) return;
       const p = products.find(item => item.id === prodId);
       if (!p) return;
-
       document.getElementById('ord-prod-name').value = p.name;
       document.getElementById('ord-buy-amount').value = ((Number(p.buyingPrice) || 0) * qty).toFixed(2);
       document.getElementById('ord-sell-amount').value = ((Number(p.sellingPrice) || 0) * qty).toFixed(2);
@@ -1612,35 +1186,19 @@
     window.handleOrderQtyOrPriceChange = () => {
       const prodId = document.getElementById('ord-product-select').value;
       const qty = Math.max(1, parseInt(document.getElementById('ord-qty').value, 10) || 1);
-      if (prodId) {
-        const p = products.find(item => item.id === prodId);
-        if (p) {
-          document.getElementById('ord-buy-amount').value = ((Number(p.buyingPrice) || 0) * qty).toFixed(2);
-          document.getElementById('ord-sell-amount').value = ((Number(p.sellingPrice) || 0) * qty).toFixed(2);
-        }
-      }
+      const p = products.find(item => item.id === prodId);
+      if (p) { document.getElementById('ord-buy-amount').value = ((Number(p.buyingPrice) || 0) * qty).toFixed(2); document.getElementById('ord-sell-amount').value = ((Number(p.sellingPrice) || 0) * qty).toFixed(2); }
       recalculateOrderModalPreview();
     };
 
     window.recalculateOrderModalPreview = () => {
-      const sellAmt = parseFloat(document.getElementById('ord-sell-amount').value) || 0;
-      const buyAmt = parseFloat(document.getElementById('ord-buy-amount').value) || 0;
-      const delCollected = parseFloat(document.getElementById('ord-del-collected').value) || 0;
-      const delActual = parseFloat(document.getElementById('ord-del-actual').value) || 0;
-      const pkgCost = parseFloat(document.getElementById('ord-packaging').value) || 0;
-
-      const customerPays = sellAmt + delCollected;
-      const businessCost = buyAmt + delActual + pkgCost;
-      const delDiff = delCollected - delActual;
-      const netProfit = sellAmt + delCollected - buyAmt - delActual - pkgCost;
-
-      document.getElementById('ord-calc-customer').textContent = formatMoney(customerPays);
-      document.getElementById('ord-calc-cost').textContent = formatMoney(businessCost);
-
+      const sellAmt = parseFloat(document.getElementById('ord-sell-amount').value) || 0, buyAmt = parseFloat(document.getElementById('ord-buy-amount').value) || 0, delCollected = parseFloat(document.getElementById('ord-del-collected').value) || 0, delActual = parseFloat(document.getElementById('ord-del-actual').value) || 0, pkgCost = parseFloat(document.getElementById('ord-packaging').value) || 0;
+      const delDiff = delCollected - delActual, netProfit = sellAmt + delCollected - buyAmt - delActual - pkgCost;
+      document.getElementById('ord-calc-customer').textContent = formatMoney(sellAmt + delCollected);
+      document.getElementById('ord-calc-cost').textContent = formatMoney(buyAmt + delActual + pkgCost);
       const diffEl = document.getElementById('ord-calc-del-diff');
       diffEl.textContent = `${delDiff >= 0 ? '+' : ''}${formatMoney(delDiff)}`;
       diffEl.className = `font-serif text-xl ${delDiff >= 0 ? 'text-sage' : 'text-red-300'}`;
-
       const profitEl = document.getElementById('ord-calc-net-profit');
       profitEl.textContent = formatMoney(netProfit);
       profitEl.className = `font-serif text-xl ${netProfit >= 0 ? 'text-gold' : 'text-red-300'}`;
@@ -1649,333 +1207,155 @@
     window.handleSaveOrder = async (e) => {
       e.preventDefault();
       if (!currentUser) return;
-
       const docId = document.getElementById('ord-doc-id').value;
       const orderNumber = document.getElementById('ord-number').value.trim().toUpperCase();
-      const paymentStatus = document.getElementById('ord-payment-status').value;
-      const customerName = document.getElementById('ord-cust-name').value.trim();
-      const customerPhone = document.getElementById('ord-cust-phone').value.trim();
-      const deliveryAddress = document.getElementById('ord-cust-address').value.trim();
-
       const productId = document.getElementById('ord-product-select').value;
-      const productName = document.getElementById('ord-prod-name').value.trim();
       const quantity = Math.max(1, parseInt(document.getElementById('ord-qty').value, 10) || 1);
-      const buyingAmount = parseFloat(document.getElementById('ord-buy-amount').value) || 0;
-      const sellingAmount = parseFloat(document.getElementById('ord-sell-amount').value) || 0;
-
-      const deliveryCollected = parseFloat(document.getElementById('ord-del-collected').value) || 0;
-      const actualCourierCharge = parseFloat(document.getElementById('ord-del-actual').value) || 0;
-      const packagingCost = parseFloat(document.getElementById('ord-packaging').value) || 0;
-
-      const courierPartner = document.getElementById('ord-courier').value.trim() || 'Delhivery';
-      const awbNumber = document.getElementById('ord-awb').value.trim();
-      const orderStatus = document.getElementById('ord-status').value;
-      const shouldDeductStock = document.getElementById('ord-deduct-stock').checked;
-
       const btn = document.getElementById('save-order-btn');
-      btn.disabled = true;
-      btn.textContent = 'Saving Order...';
-
+      btn.disabled = true; btn.textContent = 'Saving Order...';
       try {
         const payload = {
           orderNumber,
-          paymentStatus,
-          customerName,
-          customerPhone,
-          deliveryAddress,
+          paymentStatus: document.getElementById('ord-payment-status').value,
+          customerName: document.getElementById('ord-cust-name').value.trim(),
+          customerPhone: document.getElementById('ord-cust-phone').value.trim(),
+          deliveryAddress: document.getElementById('ord-cust-address').value.trim(),
           productId,
-          productName,
+          productName: document.getElementById('ord-prod-name').value.trim(),
           quantity,
-          buyingAmount,
-          sellingAmount,
-          deliveryCollected,
-          actualCourierCharge,
-          packagingCost,
-          courierPartner,
-          awbNumber,
-          orderStatus,
+          buyingAmount: parseFloat(document.getElementById('ord-buy-amount').value) || 0,
+          sellingAmount: parseFloat(document.getElementById('ord-sell-amount').value) || 0,
+          deliveryCollected: parseFloat(document.getElementById('ord-del-collected').value) || 0,
+          actualCourierCharge: parseFloat(document.getElementById('ord-del-actual').value) || 0,
+          packagingCost: parseFloat(document.getElementById('ord-packaging').value) || 0,
+          courierPartner: document.getElementById('ord-courier').value.trim() || 'Delhivery',
+          awbNumber: document.getElementById('ord-awb').value.trim(),
+          orderStatus: document.getElementById('ord-status').value,
           updatedAtMs: Date.now()
         };
-
         if (docId) {
           await updateDoc(doc(db, 'artifacts', appId, 'users', currentUser.uid, 'orders', docId), payload);
           showToast(`Order ${orderNumber} updated.`, 'success');
         } else {
-          await addDoc(collection(db, 'artifacts', appId, 'users', currentUser.uid, 'orders'), {
-            ...payload,
-            createdAtMs: Date.now()
-          });
-
-          if (shouldDeductStock && productId) {
-            await adjustStock(productId, -quantity, `Order ${orderNumber}`);
-          }
+          await addDoc(collection(db, 'artifacts', appId, 'users', currentUser.uid, 'orders'), { ...payload, createdAtMs: Date.now() });
+          if (document.getElementById('ord-deduct-stock').checked && productId) await adjustStock(productId, -quantity, `Order ${orderNumber}`);
           showToast(`Order ${orderNumber} created and saved to cloud.`, 'success');
         }
         closeOrderModal();
-      } catch (err) {
-        console.error(err);
-        showToast('Error saving order. Please try again.', 'error');
-      } finally {
-        btn.disabled = false;
-        btn.textContent = 'Save Order';
-      }
+      } catch { showToast('Error saving order. Please try again.', 'error'); }
+      finally { btn.disabled = false; btn.textContent = 'Save Order'; }
     };
 
     window.quickUpdateOrderStatus = async (orderId, newStatus) => {
       if (!currentUser) return;
-      try {
-        await updateDoc(doc(db, 'artifacts', appId, 'users', currentUser.uid, 'orders', orderId), {
-          orderStatus: newStatus,
-          updatedAtMs: Date.now()
-        });
-        showToast(`Order status changed to ${newStatus}.`, 'success');
-      } catch (err) {
-        showToast('Failed to update order status.', 'error');
-      }
+      try { await updateDoc(doc(db, 'artifacts', appId, 'users', currentUser.uid, 'orders', orderId), { orderStatus: newStatus, updatedAtMs: Date.now() }); showToast(`Order status changed to ${newStatus}.`, 'success'); }
+      catch { showToast('Failed to update order status.', 'error'); }
     };
 
     window.deleteOrder = async (orderId) => {
       if (!currentUser) return;
       const o = orders.find(item => item.id === orderId);
-      if (!o) return;
-      if (!confirm(`Delete order "${o.orderNumber}" for ${o.customerName}?`)) return;
-
-      try {
-        await deleteDoc(doc(db, 'artifacts', appId, 'users', currentUser.uid, 'orders', orderId));
-        showToast(`Order ${o.orderNumber} deleted.`, 'info');
-      } catch (err) {
-        showToast('Unable to delete order.', 'error');
-      }
+      if (!o || !confirm(`Delete order "${o.orderNumber}" for ${o.customerName}?`)) return;
+      try { await deleteDoc(doc(db, 'artifacts', appId, 'users', currentUser.uid, 'orders', orderId)); showToast(`Order ${o.orderNumber} deleted.`, 'info'); }
+      catch { showToast('Unable to delete order.', 'error'); }
     };
 
     window.renderProducts = () => {
       const query = (document.getElementById('product-search').value || '').toLowerCase();
       const category = document.getElementById('product-category-filter').value;
       const grid = document.getElementById('products-grid');
-
-      const filtered = products.filter(p => {
-        const matchesCat = category === 'ALL' || p.category === category;
-        const matchesQuery = !query ||
-          (p.name && p.name.toLowerCase().includes(query)) ||
-          (p.sku && p.sku.toLowerCase().includes(query)) ||
-          (p.description && p.description.toLowerCase().includes(query));
-        return matchesCat && matchesQuery;
-      });
+      const filtered = products.filter(p => (category === 'ALL' || p.category === category) && (!query || (p.name && p.name.toLowerCase().includes(query)) || (p.sku && p.sku.toLowerCase().includes(query)) || (p.description && p.description.toLowerCase().includes(query))));
 
       if (filtered.length === 0) {
-        grid.innerHTML = `
-          <div class="col-span-full bg-white rounded-3xl border border-navy/10 p-12 text-center">
-            <p class="font-serif text-2xl text-navy mb-2">No Products Found</p>
-            <p class="text-xs text-navy/60 mb-5">Tap "+ Add New Product" to add your first KIVORA accessory.</p>
-            <button onclick="openProductModal()" class="px-6 py-3 rounded-full bg-navy text-cream text-xs uppercase tracking-widest">+ Add Product</button>
-          </div>
-        `;
+        grid.innerHTML = `<div class="col-span-full bg-white rounded-3xl border border-navy/10 p-12 text-center"><p class="font-serif text-2xl text-navy mb-2">No Products Found</p><p class="text-xs text-navy/60 mb-5">Tap "+ Add New Product" to add your first KIVORA accessory.</p><button onclick="openProductModal()" class="px-6 py-3 rounded-full bg-navy text-cream text-xs uppercase tracking-widest">+ Add Product</button></div>`;
         return;
       }
 
       grid.innerHTML = filtered.map(p => {
-        const m = calculateMetrics(p);
-        const isLow = (Number(p.stock) || 0) <= 5;
+        const m = calculateMetrics(p), isLow = (Number(p.stock) || 0) <= 5;
         return `
           <div class="bg-white rounded-2xl border border-navy/10 overflow-hidden shadow-sm flex flex-col justify-between">
             <div>
               <div class="relative h-44 bg-cream-dark/40 flex items-center justify-center overflow-hidden">
-                ${p.imageData
-                  ? `<img src="${p.imageData}" alt="${escapeHtml(p.name)}" class="w-full h-full object-cover" />`
-                  : `<span class="font-serif text-lg text-navy/35 tracking-widest uppercase">KIVORA</span>`
-                }
-                <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-navy/85 text-cream text-[10px] uppercase tracking-wider">
-                  ${escapeHtml(p.category)}
-                </span>
-                <span class="absolute top-3 right-3 px-2.5 py-1 rounded-full ${isLow ? 'bg-amber-600 text-white' : 'bg-sage text-navy'} text-[11px] font-medium">
-                  ${p.stock} in stock
-                </span>
+                ${p.imageData ? `<img src="${p.imageData}" alt="${escapeHtml(p.name)}" class="w-full h-full object-cover" />` : `<span class="font-serif text-lg text-navy/35 tracking-widest uppercase">KIVORA</span>`}
+                <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-navy/85 text-cream text-[10px] uppercase tracking-wider">${escapeHtml(p.category)}</span>
+                <span class="absolute top-3 right-3 px-2.5 py-1 rounded-full ${isLow ? 'bg-amber-600 text-white' : 'bg-sage text-navy'} text-[11px] font-medium">${p.stock} in stock</span>
               </div>
-
               <div class="p-5">
-                <div class="flex items-start justify-between gap-2">
-                  <div>
-                    <span class="text-[11px] uppercase tracking-wider text-gold-dark font-medium">${escapeHtml(p.sku)}</span>
-                    <h3 class="font-serif text-2xl text-navy leading-tight">${escapeHtml(p.name)}</h3>
-                  </div>
-                </div>
+                <span class="text-[11px] uppercase tracking-wider text-gold-dark font-medium">${escapeHtml(p.sku)}</span>
+                <h3 class="font-serif text-2xl text-navy leading-tight">${escapeHtml(p.name)}</h3>
                 ${p.description ? `<p class="text-xs text-navy/65 mt-2 line-clamp-2">${escapeHtml(p.description)}</p>` : ''}
-
                 <div class="mt-4 pt-4 border-t border-navy/10 grid grid-cols-2 gap-y-2.5 text-xs">
-                  <div>
-                    <span class="text-navy/55 block">Buying / Selling</span>
-                    <span class="font-medium text-navy">${formatMoney(p.buyingPrice)} / ${formatMoney(p.sellingPrice)}</span>
-                  </div>
-                  <div class="text-right">
-                    <span class="text-navy/55 block">Profit / Piece</span>
-                    <span class="font-semibold ${m.profitPerPiece >= 0 ? 'text-emerald-700' : 'text-red-600'}">
-                      ${formatMoney(m.profitPerPiece)} (${m.profitMargin.toFixed(1)}%)
-                    </span>
-                  </div>
-                  <div>
-                    <span class="text-navy/55 block">Stock Value</span>
-                    <span class="font-medium text-navy">${formatMoney(m.stockValue)}</span>
-                  </div>
-                  <div class="text-right">
-                    <span class="text-navy/55 block">Potential Profit</span>
-                    <span class="font-semibold text-navy">${formatMoney(m.potentialProfit)}</span>
-                  </div>
+                  <div><span class="text-navy/55 block">Buying / Selling</span><span class="font-medium text-navy">${formatMoney(p.buyingPrice)} / ${formatMoney(p.sellingPrice)}</span></div>
+                  <div class="text-right"><span class="text-navy/55 block">Profit / Piece</span><span class="font-semibold ${m.profitPerPiece >= 0 ? 'text-emerald-700' : 'text-red-600'}">${formatMoney(m.profitPerPiece)} (${m.profitMargin.toFixed(1)}%)</span></div>
+                  <div><span class="text-navy/55 block">Stock Value</span><span class="font-medium text-navy">${formatMoney(m.stockValue)}</span></div>
+                  <div class="text-right"><span class="text-navy/55 block">Potential Profit</span><span class="font-semibold text-navy">${formatMoney(m.potentialProfit)}</span></div>
                 </div>
               </div>
             </div>
-
             <div class="px-5 py-3.5 bg-cream/60 border-t border-navy/10 flex items-center justify-between gap-2">
-              <button onclick="openEditProductModal('${p.id}')" class="flex-1 py-2.5 rounded-xl bg-navy text-cream text-xs uppercase tracking-wider font-medium hover:bg-navy-light transition">
-                Edit
-              </button>
-              <button onclick="deleteProduct('${p.id}')" class="px-4 py-2.5 rounded-xl border border-red-200 text-red-700 text-xs uppercase tracking-wider hover:bg-red-50 transition">
-                Delete
-              </button>
+              <button onclick="openEditProductModal('${p.id}')" class="flex-1 py-2.5 rounded-xl bg-navy text-cream text-xs uppercase tracking-wider font-medium hover:bg-navy-light transition">Edit</button>
+              <button onclick="deleteProduct('${p.id}')" class="px-4 py-2.5 rounded-xl border border-red-200 text-red-700 text-xs uppercase tracking-wider hover:bg-red-50 transition">Delete</button>
             </div>
-          </div>
-        `;
+          </div>`;
       }).join('');
     };
 
     function renderInventory() {
       const list = document.getElementById('inventory-list');
-      if (products.length === 0) {
-        list.innerHTML = `<p class="p-8 text-center text-xs text-navy/55">No products in inventory yet.</p>`;
-        return;
-      }
-
-      list.innerHTML = products.map(p => {
-        const stock = Number(p.stock) || 0;
-        const isLow = stock <= 5;
+      list.innerHTML = products.length === 0 ? `<p class="p-8 text-center text-xs text-navy/55">No products in inventory yet.</p>` : products.map(p => {
+        const stock = Number(p.stock) || 0, isLow = stock <= 5;
         return `
           <div class="p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div class="flex items-center gap-3.5">
-              <div class="w-12 h-12 rounded-xl bg-cream overflow-hidden shrink-0 flex items-center justify-center border border-navy/10">
-                ${p.imageData ? `<img src="${p.imageData}" class="w-full h-full object-cover" />` : `<span class="text-[10px] text-navy/40">KIV</span>`}
-              </div>
+              <div class="w-12 h-12 rounded-xl bg-cream overflow-hidden shrink-0 flex items-center justify-center border border-navy/10">${p.imageData ? `<img src="${p.imageData}" class="w-full h-full object-cover" />` : `<span class="text-[10px] text-navy/40">KIV</span>`}</div>
               <div>
-                <div class="flex items-center gap-2">
-                  <span class="font-medium text-navy">${escapeHtml(p.name)}</span>
-                  ${isLow ? `<span class="px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 text-[10px] font-semibold">LOW</span>` : ''}
-                </div>
+                <div class="flex items-center gap-2"><span class="font-medium text-navy">${escapeHtml(p.name)}</span>${isLow ? `<span class="px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 text-[10px] font-semibold">LOW</span>` : ''}</div>
                 <div class="text-xs text-navy/60">ID: ${escapeHtml(p.sku)} • Selling: ${formatMoney(p.sellingPrice)}</div>
               </div>
             </div>
-
             <div class="flex items-center justify-between sm:justify-end gap-3">
-              <div class="text-left sm:text-right mr-2">
-                <span class="text-[10px] uppercase tracking-wider text-navy/50 block">Available</span>
-                <span class="font-serif text-2xl font-semibold ${isLow ? 'text-amber-700' : 'text-navy'}">${stock}</span>
-              </div>
+              <div class="text-left sm:text-right mr-2"><span class="text-[10px] uppercase tracking-wider text-navy/50 block">Available</span><span class="font-serif text-2xl font-semibold ${isLow ? 'text-amber-700' : 'text-navy'}">${stock}</span></div>
               <div class="flex items-center gap-2">
-                <button onclick="adjustStock('${p.id}', -1, 'Sale / Stock Out')" class="w-11 h-11 rounded-xl border border-navy/20 text-navy font-semibold text-lg hover:bg-red-50 active:scale-95 transition" title="Reduce stock by 1">
-                  -1
-                </button>
-                <button onclick="adjustStock('${p.id}', 1, 'Stock Added')" class="w-11 h-11 rounded-xl bg-sage text-navy font-semibold text-lg hover:bg-sage-dark active:scale-95 transition" title="Add 1 stock">
-                  +1
-                </button>
-                <button onclick="promptCustomStock('${p.id}')" class="px-3.5 h-11 rounded-xl bg-navy text-cream text-xs uppercase tracking-wider font-medium hover:bg-navy-light transition">
-                  Update
-                </button>
+                <button onclick="adjustStock('${p.id}', -1, 'Sale / Stock Out')" class="w-11 h-11 rounded-xl border border-navy/20 text-navy font-semibold text-lg hover:bg-red-50 active:scale-95 transition">-1</button>
+                <button onclick="adjustStock('${p.id}', 1, 'Stock Added')" class="w-11 h-11 rounded-xl bg-sage text-navy font-semibold text-lg hover:bg-sage-dark active:scale-95 transition">+1</button>
+                <button onclick="promptCustomStock('${p.id}')" class="px-3.5 h-11 rounded-xl bg-navy text-cream text-xs uppercase tracking-wider font-medium hover:bg-navy-light transition">Update</button>
               </div>
             </div>
-          </div>
-        `;
+          </div>`;
       }).join('');
     }
 
     function renderStockHistory() {
-      const tbody = document.getElementById('stock-history-tbody');
-      const recentDash = document.getElementById('dashboard-activity-list');
-
-      if (stockLogs.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="5" class="py-8 text-center text-xs text-navy/50">No stock history recorded yet.</td></tr>`;
-        recentDash.innerHTML = `<p class="text-xs text-navy/50 py-4 text-center">No activity recorded yet.</p>`;
-        return;
-      }
-
+      const tbody = document.getElementById('stock-history-tbody'), recentDash = document.getElementById('dashboard-activity-list');
+      if (stockLogs.length === 0) { tbody.innerHTML = `<tr><td colspan="5" class="py-8 text-center text-xs text-navy/50">No stock history recorded yet.</td></tr>`; recentDash.innerHTML = `<p class="text-xs text-navy/50 py-4 text-center">No activity recorded yet.</p>`; return; }
       tbody.innerHTML = stockLogs.map(log => {
         const isPos = Number(log.change) > 0;
-        return `
-          <tr>
-            <td class="py-3 px-4 text-xs text-navy/70 whitespace-nowrap">${escapeHtml(log.dateStr || '')}</td>
-            <td class="py-3 px-4 font-medium text-navy">${escapeHtml(log.productName)} <span class="text-xs text-navy/50">(${escapeHtml(log.sku)})</span></td>
-            <td class="py-3 px-4 text-xs text-navy/80">${escapeHtml(log.action)}</td>
-            <td class="py-3 px-4 font-semibold ${isPos ? 'text-emerald-700' : 'text-red-600'}">${isPos ? '+' : ''}${log.change}</td>
-            <td class="py-3 px-4 font-medium text-navy">${log.newStock}</td>
-          </tr>
-        `;
+        return `<tr><td class="py-3 px-4 text-xs text-navy/70 whitespace-nowrap">${escapeHtml(log.dateStr || '')}</td><td class="py-3 px-4 font-medium text-navy">${escapeHtml(log.productName)} <span class="text-xs text-navy/50">(${escapeHtml(log.sku)})</span></td><td class="py-3 px-4 text-xs text-navy/80">${escapeHtml(log.action)}</td><td class="py-3 px-4 font-semibold ${isPos ? 'text-emerald-700' : 'text-red-600'}">${isPos ? '+' : ''}${log.change}</td><td class="py-3 px-4 font-medium text-navy">${log.newStock}</td></tr>`;
       }).join('');
-
       recentDash.innerHTML = stockLogs.slice(0, 8).map(log => {
         const isPos = Number(log.change) > 0;
-        return `
-          <div class="flex items-center justify-between py-2 border-b border-navy/5 last:border-0 text-xs">
-            <div>
-              <span class="font-medium text-navy">${escapeHtml(log.productName)}</span>
-              <span class="text-navy/60"> — ${escapeHtml(log.action)}</span>
-              <div class="text-[10px] text-navy/45">${escapeHtml(log.dateStr || '')}</div>
-            </div>
-            <span class="font-semibold ${isPos ? 'text-emerald-700' : 'text-red-600'}">
-              ${isPos ? '+' : ''}${log.change} (Total: ${log.newStock})
-            </span>
-          </div>
-        `;
+        return `<div class="flex items-center justify-between py-2 border-b border-navy/5 last:border-0 text-xs"><div><span class="font-medium text-navy">${escapeHtml(log.productName)}</span><span class="text-navy/60"> — ${escapeHtml(log.action)}</span><div class="text-[10px] text-navy/45">${escapeHtml(log.dateStr || '')}</div></div><span class="font-semibold ${isPos ? 'text-emerald-700' : 'text-red-600'}">${isPos ? '+' : ''}${log.change} (Total: ${log.newStock})</span></div>`;
       }).join('');
     }
 
     function renderInbox() {
-      const wList = document.getElementById('waitlist-admin-list');
-      const mList = document.getElementById('messages-admin-list');
-
-      wList.innerHTML = waitlistEntries.length === 0
-        ? `<p class="text-xs text-navy/50 py-4">No waitlist subscribers yet.</p>`
-        : waitlistEntries.map(w => `
-            <div class="py-3 flex items-center justify-between">
-              <span class="font-medium text-navy">${escapeHtml(w.email)}</span>
-              <span class="text-[11px] text-navy/50">${new Date(w.createdAt).toLocaleDateString()}</span>
-            </div>
-          `).join('');
-
-      mList.innerHTML = contactMessages.length === 0
-        ? `<p class="text-xs text-navy/50 py-4">No customer inquiries yet.</p>`
-        : contactMessages.map(m => `
-            <div class="py-3.5 space-y-1">
-              <div class="flex items-center justify-between">
-                <span class="font-medium text-navy">${escapeHtml(m.name)}</span>
-                <span class="text-[11px] text-navy/50">${new Date(m.createdAt).toLocaleDateString()}</span>
-              </div>
-              <div class="text-xs text-gold-dark">${escapeHtml(m.email)}</div>
-              <p class="text-xs text-navy/75 pt-1">${escapeHtml(m.message)}</p>
-            </div>
-          `).join('');
+      document.getElementById('waitlist-admin-list').innerHTML = waitlistEntries.length === 0 ? `<p class="text-xs text-navy/50 py-4">No waitlist subscribers yet.</p>` : waitlistEntries.map(w => `<div class="py-3 flex items-center justify-between"><span class="font-medium text-navy">${escapeHtml(w.email)}</span><span class="text-[11px] text-navy/50">${new Date(w.createdAt).toLocaleDateString()}</span></div>`).join('');
+      document.getElementById('messages-admin-list').innerHTML = contactMessages.length === 0 ? `<p class="text-xs text-navy/50 py-4">No customer inquiries yet.</p>` : contactMessages.map(m => `<div class="py-3.5 space-y-1"><div class="flex items-center justify-between"><span class="font-medium text-navy">${escapeHtml(m.name)}</span><span class="text-[11px] text-navy/50">${new Date(m.createdAt).toLocaleDateString()}</span></div><div class="text-xs text-gold-dark">${escapeHtml(m.email)}</div><p class="text-xs text-navy/75 pt-1">${escapeHtml(m.message)}</p></div>`).join('');
     }
 
     window.adjustStock = async (productId, delta, actionLabel = 'Stock Updated') => {
       if (!currentUser) return;
       const product = products.find(p => p.id === productId);
       if (!product) return;
-
-      const currentStock = Number(product.stock) || 0;
-      const newStock = Math.max(0, currentStock + delta);
-      const actualDelta = newStock - currentStock;
-      if (actualDelta === 0 && delta < 0) {
-        showToast('Stock is already at 0.', 'error');
-        return;
-      }
-
+      const currentStock = Number(product.stock) || 0, newStock = Math.max(0, currentStock + delta), actualDelta = newStock - currentStock;
+      if (actualDelta === 0 && delta < 0) { showToast('Stock is already at 0.', 'error'); return; }
       try {
-        const prodRef = doc(db, 'artifacts', appId, 'users', currentUser.uid, 'products', productId);
-        await updateDoc(prodRef, {
-          stock: newStock,
-          updatedAtMs: Date.now()
-        });
-
+        await updateDoc(doc(db, 'artifacts', appId, 'users', currentUser.uid, 'products', productId), { stock: newStock, updatedAtMs: Date.now() });
+        await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'storefront_products', productId), { stock: newStock }, { merge: true });
         await logStockEvent(product.name, product.sku, actionLabel, actualDelta, newStock);
         showToast(`${product.name}: Stock updated to ${newStock}.`, 'success');
-      } catch (err) {
-        showToast('Failed to update stock.', 'error');
-      }
+      } catch { showToast('Failed to update stock.', 'error'); }
     };
 
     window.promptCustomStock = async (productId) => {
@@ -1984,30 +1364,16 @@
       const input = prompt(`Set exact available stock quantity for "${product.name}" (Current: ${product.stock}):`, product.stock);
       if (input === null) return;
       const parsed = parseInt(input, 10);
-      if (isNaN(parsed) || parsed < 0) {
-        showToast('Please enter a valid stock number (0 or higher).', 'error');
-        return;
-      }
+      if (isNaN(parsed) || parsed < 0) { showToast('Please enter a valid stock number (0 or higher).', 'error'); return; }
       const delta = parsed - (Number(product.stock) || 0);
-      if (delta === 0) return;
-      await adjustStock(productId, delta, delta > 0 ? 'Manual Stock Addition' : 'Manual Stock Reduction');
+      if (delta !== 0) await adjustStock(productId, delta, delta > 0 ? 'Manual Stock Addition' : 'Manual Stock Reduction');
     };
 
     async function logStockEvent(productName, sku, action, change, newStock) {
       if (!currentUser) return;
       const now = new Date();
-      const dateStr = now.toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' }) +
-        ' ' + now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-
-      await addDoc(collection(db, 'artifacts', appId, 'users', currentUser.uid, 'stockLogs'), {
-        productName,
-        sku,
-        action,
-        change,
-        newStock,
-        dateStr,
-        timestampMs: Date.now()
-      });
+      const dateStr = now.toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' }) + ' ' + now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      await addDoc(collection(db, 'artifacts', appId, 'users', currentUser.uid, 'stockLogs'), { productName, sku, action, change, newStock, dateStr, timestampMs: Date.now() });
     }
 
     window.openProductModal = () => {
@@ -2016,8 +1382,7 @@
       document.getElementById('prod-doc-id').value = '';
       document.getElementById('prod-image-data').value = '';
       document.getElementById('prod-image-preview').innerHTML = `<span class="text-[10px] text-navy/40 uppercase tracking-wider text-center px-1">No Image</span>`;
-      generateSKU();
-      recalculateModalPreview();
+      generateSKU(); recalculateModalPreview();
       document.getElementById('product-modal').classList.remove('hidden');
     };
 
@@ -2034,38 +1399,21 @@
       document.getElementById('prod-sell-price').value = p.sellingPrice ?? 0;
       document.getElementById('prod-stock').value = p.stock ?? 0;
       document.getElementById('prod-image-data').value = p.imageData || '';
-
-      document.getElementById('prod-image-preview').innerHTML = p.imageData
-        ? `<img src="${p.imageData}" class="w-full h-full object-cover" />`
-        : `<span class="text-[10px] text-navy/40 uppercase tracking-wider text-center px-1">No Image</span>`;
-
+      document.getElementById('prod-image-preview').innerHTML = p.imageData ? `<img src="${p.imageData}" class="w-full h-full object-cover" />` : `<span class="text-[10px] text-navy/40 uppercase tracking-wider text-center px-1">No Image</span>`;
       recalculateModalPreview();
       document.getElementById('product-modal').classList.remove('hidden');
     };
 
-    window.closeProductModal = () => {
-      document.getElementById('product-modal').classList.add('hidden');
-    };
-
-    window.generateSKU = () => {
-      const rand = Math.floor(1000 + Math.random() * 9000);
-      document.getElementById('prod-sku').value = `KIV-${rand}`;
-    };
+    window.closeProductModal = () => document.getElementById('product-modal').classList.add('hidden');
+    window.generateSKU = () => { document.getElementById('prod-sku').value = `KIV-${Math.floor(1000 + Math.random() * 9000)}`; };
 
     window.recalculateModalPreview = () => {
-      const buy = parseFloat(document.getElementById('prod-buy-price').value) || 0;
-      const sell = parseFloat(document.getElementById('prod-sell-price').value) || 0;
-      const stock = parseInt(document.getElementById('prod-stock').value, 10) || 0;
-
+      const buy = parseFloat(document.getElementById('prod-buy-price').value) || 0, sell = parseFloat(document.getElementById('prod-sell-price').value) || 0, stock = parseInt(document.getElementById('prod-stock').value, 10) || 0;
       const profitPiece = sell - buy;
-      const margin = sell > 0 ? ((profitPiece / sell) * 100) : 0;
-      const stockVal = buy * stock;
-      const totalProfit = profitPiece * stock;
-
       document.getElementById('calc-profit-piece').textContent = formatMoney(profitPiece);
-      document.getElementById('calc-margin').textContent = `${margin.toFixed(1)}%`;
-      document.getElementById('calc-stock-val').textContent = formatMoney(stockVal);
-      document.getElementById('calc-total-profit').textContent = formatMoney(totalProfit);
+      document.getElementById('calc-margin').textContent = `${(sell > 0 ? ((profitPiece / sell) * 100) : 0).toFixed(1)}%`;
+      document.getElementById('calc-stock-val').textContent = formatMoney(buy * stock);
+      document.getElementById('calc-total-profit').textContent = formatMoney(profitPiece * stock);
     };
 
     window.handleImageUpload = (event) => {
@@ -2075,21 +1423,12 @@
       reader.onload = (e) => {
         const img = new Image();
         img.onload = () => {
-          const canvas = document.createElement('canvas');
-          const MAX_DIM = 600;
-          let width = img.width;
-          let height = img.height;
-          if (width > height && width > MAX_DIM) {
-            height *= MAX_DIM / width;
-            width = MAX_DIM;
-          } else if (height > MAX_DIM) {
-            width *= MAX_DIM / height;
-            height = MAX_DIM;
-          }
-          canvas.width = width;
-          canvas.height = height;
-          const ctx = canvas.getContext('2d');
-          ctx.drawImage(img, 0, 0, width, height);
+          const canvas = document.createElement('canvas'), MAX_DIM = 600;
+          let width = img.width, height = img.height;
+          if (width > height && width > MAX_DIM) { height *= MAX_DIM / width; width = MAX_DIM; }
+          else if (height > MAX_DIM) { width *= MAX_DIM / height; height = MAX_DIM; }
+          canvas.width = width; canvas.height = height;
+          canvas.getContext('2d').drawImage(img, 0, 0, width, height);
           const compressedDataUrl = canvas.toDataURL('image/jpeg', 0.78);
           document.getElementById('prod-image-data').value = compressedDataUrl;
           document.getElementById('prod-image-preview').innerHTML = `<img src="${compressedDataUrl}" class="w-full h-full object-cover" />`;
@@ -2102,83 +1441,56 @@
     window.handleSaveProduct = async (e) => {
       e.preventDefault();
       if (!currentUser) return;
-
       const docId = document.getElementById('prod-doc-id').value;
       const name = document.getElementById('prod-name').value.trim();
       const sku = document.getElementById('prod-sku').value.trim().toUpperCase();
-      const category = document.getElementById('prod-category').value;
-      const description = document.getElementById('prod-desc').value.trim();
-      const buyingPrice = parseFloat(document.getElementById('prod-buy-price').value) || 0;
-      const sellingPrice = parseFloat(document.getElementById('prod-sell-price').value) || 0;
       const stock = parseInt(document.getElementById('prod-stock').value, 10) || 0;
-      const imageData = document.getElementById('prod-image-data').value || '';
-
       const saveBtn = document.getElementById('save-product-btn');
-      saveBtn.disabled = true;
-      saveBtn.textContent = 'Saving...';
-
+      saveBtn.disabled = true; saveBtn.textContent = 'Saving...';
       try {
         const payload = {
-          name,
-          sku,
-          category,
-          description,
-          buyingPrice,
-          sellingPrice,
+          name, sku,
+          category: document.getElementById('prod-category').value,
+          description: document.getElementById('prod-desc').value.trim(),
+          buyingPrice: parseFloat(document.getElementById('prod-buy-price').value) || 0,
+          sellingPrice: parseFloat(document.getElementById('prod-sell-price').value) || 0,
           stock,
-          imageData,
+          imageData: document.getElementById('prod-image-data').value || '',
           updatedAtMs: Date.now()
         };
-
         if (docId) {
           const existing = products.find(p => p.id === docId);
           const oldStock = existing ? (Number(existing.stock) || 0) : 0;
           await updateDoc(doc(db, 'artifacts', appId, 'users', currentUser.uid, 'products', docId), payload);
-          if (stock !== oldStock) {
-            await logStockEvent(name, sku, 'Product Edited', stock - oldStock, stock);
-          }
-          showToast('Product updated in cloud database.', 'success');
+          await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'storefront_products', docId), payload, { merge: true });
+          if (stock !== oldStock) await logStockEvent(name, sku, 'Product Edited', stock - oldStock, stock);
+          showToast('Product updated & synced to live website.', 'success');
         } else {
-          await addDoc(collection(db, 'artifacts', appId, 'users', currentUser.uid, 'products'), {
-            ...payload,
-            createdAtMs: Date.now()
-          });
+          const newRef = await addDoc(collection(db, 'artifacts', appId, 'users', currentUser.uid, 'products'), { ...payload, createdAtMs: Date.now() });
+          await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'storefront_products', newRef.id), { ...payload, createdAtMs: Date.now() });
           await logStockEvent(name, sku, 'Initial Stock Added', stock, stock);
-          showToast('New product added to KIVORA.', 'success');
+          showToast('New product published to KIVORA Storefront!', 'success');
         }
         closeProductModal();
-      } catch (err) {
-        console.error(err);
-        showToast('Error saving product. Check your connection.', 'error');
-      } finally {
-        saveBtn.disabled = false;
-        saveBtn.textContent = 'Save Product';
-      }
+      } catch { showToast('Error saving product. Check your connection.', 'error'); }
+      finally { saveBtn.disabled = false; saveBtn.textContent = 'Save Product'; }
     };
 
     window.deleteProduct = async (productId) => {
       if (!currentUser) return;
       const p = products.find(item => item.id === productId);
-      if (!p) return;
-      if (!confirm(`Delete "${p.name}" (${p.sku}) permanently?`)) return;
-
+      if (!p || !confirm(`Delete "${p.name}" (${p.sku}) permanently?`)) return;
       try {
         await deleteDoc(doc(db, 'artifacts', appId, 'users', currentUser.uid, 'products', productId));
+        await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'storefront_products', productId));
         await logStockEvent(p.name, p.sku, 'Product Deleted', -(Number(p.stock) || 0), 0);
-        showToast('Product deleted.', 'info');
-      } catch (err) {
-        showToast('Unable to delete product.', 'error');
-      }
+        showToast('Product deleted from Admin & Storefront.', 'info');
+      } catch { showToast('Unable to delete product.', 'error'); }
     };
 
     function escapeHtml(str) {
       if (str === null || str === undefined) return '';
-      return String(str)
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#039;');
+      return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
     }
   </script>
 </body>
