@@ -59,6 +59,7 @@
         <button onclick="navigate('home')" data-nav="home" class="nav-link text-sm uppercase tracking-[0.15em] text-navy/80 hover:text-navy transition py-2">Home</button>
         <button onclick="navigate('about')" data-nav="about" class="nav-link text-sm uppercase tracking-[0.15em] text-navy/80 hover:text-navy transition py-2">About KIVORA</button>
         <button onclick="navigate('collections')" data-nav="collections" class="nav-link text-sm uppercase tracking-[0.15em] text-navy/80 hover:text-navy transition py-2">Collections</button>
+        <button onclick="navigate('track')" data-nav="track" class="nav-link text-sm uppercase tracking-[0.15em] text-navy/80 hover:text-navy transition py-2">Track Order</button>
         <button onclick="navigate('contact')" data-nav="contact" class="nav-link text-sm uppercase tracking-[0.15em] text-navy/80 hover:text-navy transition py-2">Contact Us</button>
         <button onclick="navigate('admin')" data-nav="admin" class="nav-link px-5 py-2.5 rounded-full border border-navy text-xs uppercase tracking-[0.18em] text-navy hover:bg-navy hover:text-cream transition">Admin Login</button>
       </nav>
@@ -71,6 +72,7 @@
       <button onclick="navigate('home'); toggleMobileMenu()" class="block w-full text-left py-3 text-base uppercase tracking-[0.16em] text-navy border-b border-navy/5">Home</button>
       <button onclick="navigate('about'); toggleMobileMenu()" class="block w-full text-left py-3 text-base uppercase tracking-[0.16em] text-navy border-b border-navy/5">About KIVORA</button>
       <button onclick="navigate('collections'); toggleMobileMenu()" class="block w-full text-left py-3 text-base uppercase tracking-[0.16em] text-navy border-b border-navy/5">Collections</button>
+      <button onclick="navigate('track'); toggleMobileMenu()" class="block w-full text-left py-3 text-base uppercase tracking-[0.16em] text-navy border-b border-navy/5">Track Order</button>
       <button onclick="navigate('contact'); toggleMobileMenu()" class="block w-full text-left py-3 text-base uppercase tracking-[0.16em] text-navy border-b border-navy/5">Contact Us</button>
       <div class="pt-2">
         <button onclick="navigate('admin'); toggleMobileMenu()" class="w-full py-3.5 rounded-full bg-navy text-cream text-xs uppercase tracking-[0.2em] font-medium">Admin Login</button>
@@ -96,7 +98,7 @@
           </p>
           <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
             <button onclick="navigate('collections')" class="w-full sm:w-auto px-8 py-4 rounded-full bg-navy text-cream text-xs uppercase tracking-[0.22em] font-medium hover:bg-navy-light transition shadow-sm">Shop Collections</button>
-            <button onclick="navigate('about')" class="w-full sm:w-auto px-8 py-4 rounded-full border border-navy/30 text-navy text-xs uppercase tracking-[0.22em] font-medium hover:border-navy transition">Our Philosophy</button>
+            <button onclick="navigate('track')" class="w-full sm:w-auto px-8 py-4 rounded-full border border-navy/30 text-navy text-xs uppercase tracking-[0.22em] font-medium hover:border-navy transition">Track Order</button>
           </div>
         </div>
       </div>
@@ -192,6 +194,26 @@
           <p class="max-w-lg mx-auto text-sm sm:text-base text-navy/75 leading-relaxed mb-8">We are hand-selecting our inaugural pieces to ensure every item meets the KIVORA standard of quality and elegance. Check back soon to explore our full catalog.</p>
           <button onclick="navigate('home')" class="px-7 py-3.5 rounded-full border border-navy text-navy text-xs uppercase tracking-[0.2em] hover:bg-navy hover:text-cream transition">Join Launch Waitlist</button>
         </div>
+      </div>
+    </section>
+
+    <!-- PAGE 3B: LIVE SHIPMENT TRACKING -->
+    <section id="page-track" class="page-section hidden py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto">
+        <div class="text-center mb-10">
+          <span class="text-xs uppercase tracking-[0.28em] text-gold-dark">Real-Time Logistics</span>
+          <h1 class="font-serif text-4xl sm:text-6xl text-navy mt-3 mb-4">Track Your Order</h1>
+          <p class="text-sm sm:text-base text-navy/70">Enter your Delhivery AWB tracking number or KIVORA Order ID (e.g., KIV-123456-789).</p>
+        </div>
+
+        <form onsubmit="handleCustomerTrackLookup(event)" class="flex flex-col sm:flex-row gap-3 mb-8">
+          <input type="text" id="track-input-query" required placeholder="Enter Delhivery AWB or KIV-XXXXXX-XXX" class="flex-grow px-5 py-3.5 rounded-full bg-white border border-navy/20 text-navy focus:outline-none focus:border-navy" />
+          <button type="submit" id="track-lookup-btn" class="px-8 py-3.5 rounded-full bg-navy text-cream text-xs uppercase tracking-[0.2em] font-medium hover:bg-navy-light transition whitespace-nowrap">
+            Track Shipment
+          </button>
+        </form>
+
+        <div id="customer-tracking-result" class="hidden bg-white/90 rounded-3xl border border-navy/10 p-6 sm:p-8 shadow-sm space-y-6"></div>
       </div>
     </section>
 
@@ -312,7 +334,10 @@
           <div class="flex justify-between"><span class="text-navy/60">Delhivery AWB:</span><strong id="co-succ-awb" class="text-gold-dark font-mono">—</strong></div>
           <div class="flex justify-between"><span class="text-navy/60">Total Amount:</span><strong id="co-succ-total" class="text-navy">—</strong></div>
         </div>
-        <button onclick="closeCustomerCheckout()" class="w-full py-3.5 rounded-full bg-navy text-cream text-xs uppercase tracking-[0.2em]">Continue Shopping</button>
+        <div class="flex gap-3">
+          <button onclick="trackFromReceipt()" class="flex-1 py-3.5 rounded-full bg-gold text-navy text-xs uppercase tracking-[0.18em] font-medium">Track Shipment</button>
+          <button onclick="closeCustomerCheckout()" class="flex-1 py-3.5 rounded-full bg-navy text-cream text-xs uppercase tracking-[0.18em]">Continue Shopping</button>
+        </div>
       </div>
     </div>
   </div>
@@ -328,6 +353,7 @@
         <button onclick="navigate('home')" class="hover:text-gold transition">Home</button>
         <button onclick="navigate('about')" class="hover:text-gold transition">About</button>
         <button onclick="navigate('collections')" class="hover:text-gold transition">Collections</button>
+        <button onclick="navigate('track')" class="hover:text-gold transition">Track Order</button>
         <button onclick="navigate('contact')" class="hover:text-gold transition">Contact</button>
         <button onclick="navigate('admin')" class="hover:text-gold transition">Admin</button>
       </div>
@@ -745,7 +771,7 @@
     const auth = getAuth(app);
     const db = getFirestore(app);
 
-    let currentUser = null, currency = '₹', products = [], publicStoreProducts = [], selectedStoreCat = 'ALL', activeCheckoutProd = null, orders = [], stockLogs = [], waitlistEntries = [], contactMessages = [], unsubscribers = [];
+    let currentUser = null, currency = '₹', products = [], publicStoreProducts = [], selectedStoreCat = 'ALL', activeCheckoutProd = null, lastGeneratedAwb = '', orders = [], stockLogs = [], waitlistEntries = [], contactMessages = [], unsubscribers = [];
     document.getElementById('current-year').textContent = new Date().getFullYear();
 
     window.showToast = (message, type = 'info') => {
@@ -855,6 +881,7 @@
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
+            idempotencyKey: `IDEM-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`,
             customerName: document.getElementById('co-cust-name').value.trim(),
             customerPhone: document.getElementById('co-cust-phone').value.trim(),
             streetAddress: document.getElementById('co-cust-address').value.trim(),
@@ -873,6 +900,7 @@
         const data = await res.json();
         if (!res.ok || !data.success) throw new Error(data.error || 'Delhivery shipment could not be created.');
         await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'storefront_orders'), { ...data.order, syncedToAdmin: false });
+        lastGeneratedAwb = data.order.awbNumber || '';
         document.getElementById('co-succ-orderid').textContent = data.order.orderNumber;
         document.getElementById('co-succ-awb').textContent = data.order.awbNumber || 'Assigned Shortly';
         document.getElementById('co-succ-total').textContent = `₹${(data.order.sellingAmount + data.order.deliveryCollected).toLocaleString('en-IN')}`;
@@ -881,6 +909,82 @@
         showToast('Order placed & Delhivery AWB generated!', 'success');
       } catch (err) { showToast(err.message, 'error'); }
       finally { btn.disabled = false; btn.textContent = 'Place Order & Generate Delhivery AWB'; }
+    };
+
+    window.trackFromReceipt = () => {
+      closeCustomerCheckout();
+      navigate('track');
+      if (lastGeneratedAwb) {
+        document.getElementById('track-input-query').value = lastGeneratedAwb;
+        document.getElementById('track-lookup-btn').click();
+      }
+    };
+
+    // LIVE SHIPMENT TRACKING (CUSTOMER LOOKUP)
+    window.handleCustomerTrackLookup = async (e) => {
+      e.preventDefault();
+      const queryVal = document.getElementById('track-input-query').value.trim();
+      const btn = document.getElementById('track-lookup-btn');
+      const box = document.getElementById('customer-tracking-result');
+      if (!queryVal) return;
+
+      btn.disabled = true;
+      btn.textContent = 'Checking Delhivery...';
+      try {
+        let awbToTrack = queryVal;
+        if (queryVal.toUpperCase().startsWith('KIV-') || queryVal.toUpperCase().startsWith('ORD-')) {
+          const snap = await getDocs(collection(db, 'artifacts', appId, 'public', 'data', 'storefront_orders'));
+          const matched = snap.docs.map(d => d.data()).find(o => (o.orderNumber || '').toUpperCase() === queryVal.toUpperCase());
+          if (!matched || !matched.awbNumber) throw new Error('Order ID not found or AWB not yet assigned.');
+          awbToTrack = matched.awbNumber;
+        }
+
+        const res = await fetch(`/.netlify/functions/track-order?awb=${encodeURIComponent(awbToTrack)}`);
+        const data = await res.json();
+        if (!res.ok || !data.success) throw new Error(data.error || 'Unable to fetch tracking details.');
+
+        const stages = ['Pickup Pending', 'Picked Up', 'In Transit', 'Out for Delivery', 'Delivered'];
+        const activeIdx = stages.findIndex(s => s.toLowerCase() === (data.status || '').toLowerCase());
+
+        box.classList.remove('hidden');
+        box.innerHTML = `
+          <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-navy/10">
+            <div>
+              <span class="text-[11px] uppercase tracking-wider text-gold-dark">Delhivery AWB</span>
+              <div class="font-mono text-lg font-semibold text-navy">${escapeHtml(data.awb)}</div>
+            </div>
+            <span class="px-4 py-1.5 rounded-full bg-navy text-gold text-xs uppercase tracking-wider font-medium">${escapeHtml(data.status)}</span>
+          </div>
+          <div class="grid grid-cols-5 gap-1.5 text-center">
+            ${stages.map((st, idx) => `
+              <div class="p-2 rounded-xl text-[10px] font-medium ${idx <= activeIdx ? 'bg-sage text-navy' : 'bg-cream text-navy/40'}">
+                ${st}
+              </div>
+            `).join('')}
+          </div>
+          <div class="text-xs text-navy/75 bg-cream/70 p-4 rounded-2xl space-y-1">
+            <div><strong>Current Location:</strong> ${escapeHtml(data.location || 'Origin Hub')}</div>
+            <div><strong>Latest Update:</strong> ${escapeHtml(data.instructions || data.rawStatus)}</div>
+          </div>
+          <div class="space-y-2.5">
+            <h4 class="text-xs uppercase tracking-wider text-navy/60">Scan History</h4>
+            ${(data.scans || []).map(sc => `
+              <div class="flex items-start justify-between gap-3 text-xs py-2 border-b border-navy/5 last:border-0">
+                <div>
+                  <div class="font-medium text-navy">${escapeHtml(sc.status)}</div>
+                  <div class="text-[11px] text-navy/60">${escapeHtml(sc.location)}</div>
+                </div>
+                <div class="text-[11px] text-navy/50 whitespace-nowrap">${escapeHtml(sc.time)}</div>
+              </div>
+            `).join('')}
+          </div>
+        `;
+      } catch (err) {
+        showToast(err.message, 'error');
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Track Shipment';
+      }
     };
 
     window.handleAdminAuth = async (e) => {
@@ -1107,6 +1211,12 @@
               <div class="flex flex-wrap items-center justify-between gap-2 text-xs bg-sage/30 px-3.5 py-2.5 rounded-xl">
                 <div><span class="text-navy/60">Courier:</span> <span class="font-medium text-navy">${escapeHtml(o.courierPartner || 'Delhivery')}</span></div>
                 <div><span class="text-navy/60">AWB:</span> <span class="font-mono font-medium text-navy">${o.awbNumber ? escapeHtml(o.awbNumber) : 'Not assigned'}</span></div>
+                ${o.awbNumber ? `
+                  <div class="flex items-center gap-1.5">
+                    <button onclick="refreshAdminOrderTracking('${o.id}', '${escapeHtml(o.awbNumber)}')" class="px-2.5 py-1 rounded-lg bg-navy text-cream text-[11px] font-medium hover:bg-navy-light transition">↻ Live Track</button>
+                    <button onclick="downloadDelhiveryLabel('${escapeHtml(o.awbNumber)}')" class="px-2.5 py-1 rounded-lg border border-navy/25 text-navy text-[11px] font-medium hover:bg-white transition">Label PDF</button>
+                  </div>
+                ` : ''}
               </div>
               <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 pt-2 border-t border-navy/10 text-xs">
                 <div><span class="text-[10px] uppercase text-navy/50 block">Customer Paid</span><span class="font-medium text-navy">${formatMoney(m.totalCustomerPayment)}</span><span class="text-[10px] text-navy/50 block">(Incl. ${formatMoney(o.deliveryCollected)} del)</span></div>
@@ -1125,6 +1235,47 @@
             </div>
           </div>`;
       }).join('');
+    };
+
+    // ADMIN LIVE TRACKING REFRESH & SHIPPING LABEL PDF
+    window.refreshAdminOrderTracking = async (orderId, awb) => {
+      if (!currentUser || !awb) return;
+      try {
+        showToast(`Fetching live Delhivery status for ${awb}...`);
+        const res = await fetch(`/.netlify/functions/track-order?awb=${encodeURIComponent(awb)}`);
+        const data = await res.json();
+        if (!res.ok || !data.success) throw new Error(data.error || 'Tracking unavailable');
+
+        const mappedStatus = ['Delivered', 'Out for Delivery'].includes(data.status)
+          ? data.status
+          : (['Picked Up', 'In Transit'].includes(data.status) ? 'Shipped' : 'Processing');
+
+        await updateDoc(doc(db, 'artifacts', appId, 'users', currentUser.uid, 'orders', orderId), {
+          orderStatus: mappedStatus,
+          trackingStatus: data.status,
+          trackingLocation: data.location,
+          trackingUpdatedAt: data.updatedAt,
+          updatedAtMs: Date.now()
+        });
+        showToast(`Delhivery: ${data.status} (${data.location || 'Updated'})`, 'success');
+      } catch (err) {
+        showToast(err.message, 'error');
+      }
+    };
+
+    window.downloadDelhiveryLabel = async (awb) => {
+      if (!awb) return;
+      try {
+        const res = await fetch(`/.netlify/functions/track-order?action=label&awb=${encodeURIComponent(awb)}`);
+        const data = await res.json();
+        if (data.pdfLink) {
+          window.open(data.pdfLink, '_blank');
+        } else {
+          showToast('Shipping label PDF not ready yet from Delhivery.', 'error');
+        }
+      } catch {
+        showToast('Unable to fetch shipping label.', 'error');
+      }
     };
 
     window.openOrderModal = () => {
